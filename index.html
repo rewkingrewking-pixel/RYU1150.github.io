@@ -1,0 +1,2259 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Trading Journal">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="data:application/manifest+json,{
+  &quot;name&quot;: &quot;Trading Journal Pro&quot;,
+  &quot;short_name&quot;: &quot;TJ Pro&quot;,
+  &quot;description&quot;: &quot;Professional Trading Journal&quot;,
+  &quot;start_url&quot;: &quot;.&quot;,
+  &quot;display&quot;: &quot;standalone&quot;,
+  &quot;background_color&quot;: &quot;%231e3a5f&quot;,
+  &quot;theme_color&quot;: &quot;%231e3a5f&quot;,
+  &quot;orientation&quot;: &quot;portrait&quot;,
+  &quot;icons&quot;: [ { &quot;src&quot;: &quot;data:image/png;base64,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&quot;, &quot;sizes&quot;: &quot;192x192&quot;, &quot;type&quot;: &quot;image/png&quot;, &quot;purpose&quot;: &quot;any maskable&quot; }, { &quot;src&quot;: &quot;data:image/png;base64,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&quot;, &quot;sizes&quot;: &quot;512x512&quot;, &quot;type&quot;: &quot;image/png&quot;, &quot;purpose&quot;: &quot;any maskable&quot; } ]
+}">
+<!-- Apple touch icon (SVG encoded) -->
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Journal Pro</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0d0d0d; color: #ccc; font-family: 'Segoe UI', sans-serif; min-height: 100vh; }
+
+/* ===== NAVBAR ===== */
+.navbar { background: #111; border-bottom: 1px solid #222; padding: 14px 30px; display: flex; align-items: center; justify-content: space-between; }
+.navbar h1 { color: #fff; font-size: 20px; font-weight: 700; }
+.navbar .right-info { display: flex; align-items: center; gap: 20px; }
+.pnl-block { text-align: right; }
+.pnl-block .pnl-label { font-size: 11px; color: #777; letter-spacing: .5px; }
+.pnl-block .pnl-val { font-size: 22px; font-weight: 700; color: #00e676; }
+
+/* ===== API KEY BUTTON ===== */
+.btn-api-key { display: flex; align-items: center; gap: 6px; background: #1e1e1e; border: 1px solid #333; color: #777; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all .2s; }
+.btn-api-key:hover { border-color: #5c6bc0; color: #a0aee8; }
+.btn-api-key.key-set { border-color: #00e67644; color: #00e676; background: #00e67608; }
+.api-key-dot { width: 7px; height: 7px; border-radius: 50%; background: #444; display: inline-block; }
+.btn-api-key.key-set .api-key-dot { background: #00e676; }
+
+/* ===== AI PROVIDER TABS ===== */
+.provider-tabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
+.provider-tab { flex: 1; min-width: 90px; padding: 10px 8px; border: 1px solid #2a2a2a; background: #111; color: #555; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all .2s; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.provider-tab .p-icon { font-size: 18px; }
+.provider-tab .p-name { font-size: 11px; letter-spacing: .3px; }
+.provider-tab:hover:not(.active) { border-color: #333; color: #888; }
+.provider-tab.active.claude  { border-color: #c97c3a; background: #c97c3a15; color: #e8a96a; }
+.provider-tab.active.gemini  { border-color: #4285f4; background: #4285f415; color: #7baaf7; }
+.provider-tab.active.openai  { border-color: #10a37f; background: #10a37f15; color: #34c99a; }
+.provider-tab.active.grok    { border-color: #aaa;    background: #aaa10;    color: #ddd; }
+.provider-tab.active.deepseek { border-color: #4f7eff; background: #4f7eff15; color: #8aaeff; }
+.provider-panel { display: none; }
+.provider-panel.active { display: block; }
+.ak-model-select { margin-bottom: 14px; }
+.ak-model-select label { font-size: 11px; color: #555; margin-bottom: 5px; display: block; }
+.ak-model-select select { width: 100%; background: #1e1e1e; border: 1px solid #333; color: #ddd; border-radius: 6px; padding: 8px 12px; font-size: 13px; outline: none; }
+.ak-model-select select:focus { border-color: #5c6bc0; }
+
+/* ===== API KEY MODAL ===== */
+.apikey-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 2000; align-items: center; justify-content: center; }
+.apikey-overlay.open { display: flex; }
+.apikey-modal { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; width: 480px; max-width: 96vw; padding: 28px; }
+.apikey-modal h3 { color: #fff; font-size: 16px; margin-bottom: 6px; }
+.apikey-modal .ak-desc { font-size: 12px; color: #555; margin-bottom: 20px; line-height: 1.6; }
+.ak-input-wrap { position: relative; margin-bottom: 14px; }
+.ak-input-wrap input { width: 100%; background: #1e1e1e; border: 1px solid #333; color: #ddd; border-radius: 6px; padding: 10px 44px 10px 12px; font-size: 14px; font-family: 'Consolas', monospace; outline: none; transition: border .2s; }
+.ak-input-wrap input:focus { border-color: #5c6bc0; }
+.ak-toggle-vis { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #555; cursor: pointer; font-size: 16px; padding: 2px; transition: color .2s; }
+.ak-toggle-vis:hover { color: #aaa; }
+.ak-status { font-size: 12px; min-height: 16px; margin-bottom: 14px; }
+.ak-status.ok { color: #00e676; }
+.ak-status.warn { color: #ffd740; }
+.ak-note { background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 6px; padding: 10px 12px; font-size: 11px; color: #555; line-height: 1.6; margin-bottom: 18px; }
+.ak-note a { color: #5c6bc0; text-decoration: none; }
+.ak-note a:hover { text-decoration: underline; }
+.ak-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+/* ===== TABS ===== */
+.tabs { display: flex; gap: 6px; padding: 16px 30px 0; border-bottom: 1px solid #222; background: #111; }
+.tab-btn { padding: 8px 20px; border: none; background: transparent; color: #666; font-size: 14px; cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s; }
+.tab-btn.active { color: #fff; border-bottom: 2px solid #5c6bc0; }
+.tab-btn:hover { color: #ddd; }
+
+.content { padding: 24px 30px; display: none; }
+.content.active { display: block; }
+
+/* ===== CALENDAR ===== */
+.calendar-wrapper { background: #111; border: 1px solid #222; border-radius: 12px; overflow: hidden; }
+.calendar-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #222; }
+.calendar-header .cal-nav-left { display:flex; align-items:center; gap:10px; }
+.calendar-header .cal-nav-right { display:flex; align-items:center; gap:10px; }
+.calendar-header h2 { font-size: 18px; color: #fff; font-weight: 700; min-width:130px; text-align:center; }
+.cal-monthly-pnl { font-size:14px; color:#888; font-weight:600; }
+.cal-monthly-pnl span { font-size:18px; font-weight:800; margin-left:6px; }
+.nav-btn { background: #1e1e1e; border: 1px solid #2a2a2a; color: #ccc; width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-size: 15px; transition: background .2s; display:flex; align-items:center; justify-content:center; }
+.nav-btn:hover { background: #2a2a2a; }
+.btn-today { background:#1e1e1e; border:1px solid #3f51b5; color:#7986cb; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; transition:all .2s; }
+.btn-today:hover { background:#3f51b5; color:#fff; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr) 155px; border-top: 1px solid #1a1a1a; }
+.cal-head { background: #0f0f0f; text-align: center; padding: 12px 0; font-size: 11px; font-weight: 700; color: #555; border-right: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; letter-spacing: 1px; }
+.cal-head.weekly-head { color: #555; background:#0f0f0f; }
+
+/* Day cell base */
+.cal-day { border-right: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 10px 10px 8px; min-height: 100px; cursor: pointer; transition: filter .15s; position: relative; background:#111; }
+.cal-day:hover { filter: brightness(1.18); }
+.cal-day.today { outline: 2px solid #3f51b5; outline-offset:-2px; z-index:1; }
+.cal-day.other-month { opacity: .18; pointer-events: none; background:#0d0d0d; }
+
+/* Profit / Loss background tint */
+.cal-day.day-profit { background: #1a3326; }
+.cal-day.day-profit:hover { background: #1e3a2a; }
+.cal-day.day-loss   { background: #3a1a1a; }
+.cal-day.day-loss:hover { background: #401e1e; }
+
+
+
+.cal-day .day-num { font-size: 13px; color: #888; font-weight: 700; margin-bottom: 8px; display:inline-block; width:24px; height:24px; line-height:24px; text-align:center; border-radius:50%; }
+.cal-day.today .day-num { background:#3f51b5; color:#fff; }
+.cal-day.day-profit .day-num { color:#9be5bb; }
+.cal-day.day-loss   .day-num { color:#e5a0a0; }
+
+.day-pnl { font-size: 15px; font-weight: 800; margin-bottom:4px; }
+.day-pnl.profit { color: #00e676; }
+.day-pnl.loss   { color: #ff5252; }
+.day-trades-badge { font-size: 11px; color: #888; }
+.cal-day.day-profit .day-trades-badge { color:#888; }
+.cal-day.day-loss   .day-trades-badge { color:#888; }
+.day-no-trade { font-size: 11px; color: #2a2a2a; margin-top:4px; }
+
+/* Weekly summary column */
+.cal-weekly { border-bottom: 1px solid #1a1a1a; border-right: 1px solid #1a1a1a; padding: 10px 14px; min-height: 100px; display: flex; flex-direction: column; justify-content: center; gap: 5px; background:#111; }
+.cal-weekly.w-profit { background:#111; }
+.cal-weekly.w-loss   { background:#111; }
+.cal-weekly .w-label { font-size: 10px; color: #888; letter-spacing: 1px; font-weight: 700; }
+.cal-weekly .w-pnl { font-size: 17px; font-weight: 800; }
+.cal-weekly .w-pnl.profit { color: #00e676; }
+.cal-weekly .w-pnl.loss   { color: #ff5252; }
+.cal-weekly .w-pnl.zero   { color: #2a2a2a; }
+.cal-weekly .w-trades { font-size: 11px; color: #888; }
+.cal-weekly.w-profit .w-trades { color:#888; }
+.cal-weekly.w-loss   .w-trades { color:#888; }
+
+/* ===== MODAL ===== */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.82); z-index: 999; align-items: center; justify-content: center; }
+.modal-overlay.open { display: flex; }
+.modal { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; width: 700px; max-width: 96vw; max-height: 93vh; overflow-y: auto; padding: 28px; }
+.modal h3 { color: #fff; font-size: 17px; margin-bottom: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-row.full { grid-template-columns: 1fr; }
+.form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+label { display: block; font-size: 12px; color: #777; margin-bottom: 5px; letter-spacing: .3px; }
+input, select, textarea { width: 100%; background: #1e1e1e; border: 1px solid #333; color: #ddd; border-radius: 6px; padding: 9px 12px; font-size: 14px; outline: none; transition: border .2s; }
+input:focus, select:focus, textarea:focus { border-color: #5c6bc0; }
+textarea { resize: vertical; min-height: 80px; font-family: inherit; }
+select option { background: #1e1e1e; }
+input[readonly] { color: #888; cursor: default; }
+.pnl-display { background: #0d0d0d; border: 1px solid #222; border-radius: 6px; padding: 10px 14px; font-size: 20px; font-weight: 700; text-align: center; color: #444; }
+.pnl-display.profit { color: #00e676; border-color: #00e67633; }
+.pnl-display.loss { color: #ff5252; border-color: #ff525233; }
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+.btn { padding: 9px 22px; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; font-weight: 600; transition: opacity .2s; }
+.btn:hover { opacity: .85; }
+.btn-primary { background: #5c6bc0; color: #fff; }
+.btn-danger { background: #c62828; color: #fff; }
+.btn-cancel { background: #2a2a2a; color: #ccc; }
+
+/* ===== AI SCAN SECTION ===== */
+.ai-scan-section { background: #0d0d0d; border: 1px solid #5c6bc044; border-radius: 8px; padding: 16px; margin-bottom: 18px; }
+.ai-scan-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.ai-scan-header h4 { color: #a0aee8; font-size: 14px; font-weight: 600; }
+.ai-badge { background: #5c6bc022; border: 1px solid #5c6bc055; color: #a0aee8; font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 700; letter-spacing: .5px; }
+
+/* ===== MULTI-ORDER PREVIEW MODAL ===== */
+.multi-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.88); z-index: 3000; align-items: center; justify-content: center; }
+.multi-overlay.open { display: flex; }
+.multi-modal { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; width: 860px; max-width: 97vw; max-height: 90vh; display: flex; flex-direction: column; }
+.multi-modal-head { padding: 20px 24px 14px; border-bottom: 1px solid #222; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.multi-modal-head h3 { color: #fff; font-size: 16px; }
+.multi-modal-head .multi-summary { font-size: 12px; color: #666; }
+.multi-modal-body { overflow-y: auto; padding: 16px 24px; flex: 1; }
+.multi-modal-foot { padding: 14px 24px; border-top: 1px solid #222; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; gap: 10px; }
+.multi-select-all { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #aaa; cursor: pointer; user-select: none; }
+.multi-select-all input[type=checkbox] { width: 15px; height: 15px; accent-color: #5c6bc0; cursor: pointer; }
+.order-card { background: #111; border: 1px solid #2a2a2a; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; transition: border .15s; }
+.order-card:hover { border-color: #333; }
+.order-card.selected { border-color: #5c6bc055; background: #5c6bc008; }
+.order-card.excluded { opacity: .45; }
+.order-card .oc-check { padding-top: 2px; flex-shrink: 0; }
+.order-card .oc-check input[type=checkbox] { width: 16px; height: 16px; accent-color: #5c6bc0; cursor: pointer; }
+.order-card .oc-num { font-size: 11px; color: #555; font-weight: 700; width: 22px; text-align: center; flex-shrink: 0; padding-top: 2px; }
+.order-card .oc-body { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px 14px; }
+.order-card .oc-field { font-size: 12px; }
+.order-card .oc-field .oc-lbl { color: #555; font-size: 10px; letter-spacing: .3px; margin-bottom: 2px; }
+.order-card .oc-field .oc-val { color: #ccc; font-weight: 600; }
+.order-card .oc-field .oc-val.profit { color: #00e676; }
+.order-card .oc-field .oc-val.loss { color: #ff5252; }
+.order-card .oc-field .oc-val.be { color: #ffd740; }
+.oc-symbol { font-size: 14px; font-weight: 700; color: #fff; }
+.oc-dir-long { color: #00e676; }
+.oc-dir-short { color: #ff5252; }
+.btn-save-all { background: linear-gradient(135deg, #3f51b5, #5c6bc0); color: #fff; border: none; padding: 10px 24px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity .2s; }
+.btn-save-all:hover { opacity: .85; }
+.btn-save-all:disabled { opacity: .4; cursor: default; }
+.multi-saved-badge { font-size: 12px; color: #00e676; font-weight: 700; display: none; }
+
+/* AI Mode Tabs */
+.ai-mode-tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+.ai-mode-btn { flex: 1; padding: 8px; border: 1px solid #2a2a2a; background: #111; color: #666; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all .2s; text-align: center; }
+.ai-mode-btn.active { border-color: #5c6bc0; background: #5c6bc022; color: #a0aee8; }
+.ai-mode-btn:hover:not(.active) { border-color: #333; color: #999; }
+.ai-mode-panel { display: none; }
+.ai-mode-panel.active { display: block; }
+
+/* Text paste area */
+.ai-paste-area { width: 100%; background: #111; border: 1px dashed #2a2a2a; color: #888; border-radius: 6px; padding: 10px 12px; font-size: 13px; font-family: 'Consolas', monospace; min-height: 90px; resize: vertical; outline: none; transition: border .2s; }
+.ai-paste-area:focus { border-color: #5c6bc0; border-style: solid; color: #ccc; }
+.ai-paste-area::placeholder { color: #333; }
+
+/* Image upload area */
+.img-upload-area { border: 2px dashed #2a2a2a; border-radius: 8px; padding: 24px; text-align: center; cursor: pointer; transition: all .2s; position: relative; background: #111; }
+.img-upload-area:hover, .img-upload-area.drag-over { border-color: #5c6bc0; background: #5c6bc010; }
+.img-upload-area .up-icon { font-size: 32px; margin-bottom: 8px; }
+.img-upload-area .up-text { font-size: 13px; color: #666; }
+.img-upload-area .up-sub { font-size: 11px; color: #444; margin-top: 4px; }
+.img-upload-area input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.img-preview-wrap { position: relative; margin-top: 10px; display: none; }
+.img-preview-wrap img { width: 100%; max-height: 200px; object-fit: contain; border-radius: 6px; border: 1px solid #2a2a2a; }
+.img-preview-wrap .img-clear { position: absolute; top: 6px; right: 6px; background: #c62828; color: #fff; border: none; border-radius: 4px; padding: 2px 8px; font-size: 11px; cursor: pointer; }
+
+.btn-ai { background: linear-gradient(135deg, #3f51b5, #5c6bc0); color: #fff; border: none; padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: opacity .2s; }
+.btn-ai:hover { opacity: .85; }
+.btn-ai:disabled { opacity: .4; cursor: default; }
+.ai-status { font-size: 12px; color: #666; margin-top: 8px; min-height: 18px; }
+.ai-status.ok { color: #00e676; }
+.ai-status.err { color: #ff5252; }
+.ai-status.loading { color: #a0aee8; }
+.divider { text-align: center; color: #333; font-size: 12px; margin: 12px 0; position: relative; }
+.divider::before { content:''; position:absolute; left:0; top:50%; width:45%; height:1px; background:#222; }
+.divider::after { content:''; position:absolute; right:0; top:50%; width:45%; height:1px; background:#222; }
+.val-warn { background: #3a2800; border: 1px solid #ffd74044; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #ffd740; margin-top: -8px; margin-bottom: 10px; display: none; }
+.calc-note { font-size: 11px; color: #555; margin-top: 4px; }
+
+/* ===== TOOLBAR ===== */
+.toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.add-trade-btn { display: flex; align-items: center; gap: 8px; background: #5c6bc0; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s; }
+.add-trade-btn:hover { background: #3f51b5; }
+.filter-wrap { display: flex; gap: 8px; flex: 1; flex-wrap: wrap; }
+.filter-wrap select, .filter-wrap input { max-width: 160px; font-size: 13px; padding: 8px 10px; }
+.btn-export { background: #1e1e1e; border: 1px solid #2a2a2a; color: #aaa; padding: 9px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+.btn-export:hover { background: #2a2a2a; color: #fff; }
+.btn-delete-all { background: #2a0a0a; border: 1px solid #c62828; color: #ef9a9a; padding: 9px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; transition: all .2s; }
+.btn-delete-all:hover { background: #c62828; color: #fff; }
+
+/* ===== TRADE TABLE ===== */
+.trade-table-wrap { overflow-x: auto; }
+.trade-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 900px; }
+.trade-table th { background: #161616; color: #444; padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 1px solid #222; font-size: 11px; letter-spacing: .4px; }
+.trade-table td { padding: 10px 12px; border-bottom: 1px solid #161616; color: #ccc; }
+.trade-table tr:hover td { background: #161616; }
+.profit-cell { color: #00e676; font-weight: 700; }
+.loss-cell { color: #ff5252; font-weight: 700; }
+.be-cell { color: #ffd740; font-weight: 700; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+.badge-long { background: #1b3a2d; color: #00e676; }
+.badge-short { background: #3a1b1b; color: #ff5252; }
+.badge-win { background: #1b3a2d; color: #00e676; }
+.badge-loss { background: #3a1b1b; color: #ff5252; }
+.badge-be { background: #2a2a1a; color: #ffd740; }
+.btn-edit { background: none; border: 1px solid #2a2a3a; color: #777; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+.btn-edit:hover { border-color: #5c6bc0; color: #5c6bc0; }
+.btn-del { background: none; border: 1px solid #2a2a3a; color: #777; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; margin-left: 4px; }
+.btn-del:hover { border-color: #ff5252; color: #ff5252; }
+
+/* ===== STATS ===== */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-bottom: 28px; }
+.stat-card { background: #161616; border: 1px solid #222; border-radius: 8px; padding: 18px 20px; }
+.stat-card .s-label { font-size: 11px; color: #444; letter-spacing: .5px; margin-bottom: 6px; font-weight: 600; }
+.stat-card .s-value { font-size: 22px; font-weight: 700; color: #fff; }
+.stat-card .s-value.profit { color: #00e676; }
+.stat-card .s-value.loss { color: #ff5252; }
+.stat-card .s-value.warn { color: #ffd740; }
+.stats-breakdown { background: #161616; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-top: 0; }
+.stats-breakdown h3 { color: #aaa; font-size: 13px; font-weight: 600; margin-bottom: 14px; letter-spacing: .5px; }
+.breakdown-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.breakdown-table th { color: #444; font-size: 11px; padding: 6px 10px; text-align: left; border-bottom: 1px solid #222; }
+.breakdown-table td { padding: 8px 10px; border-bottom: 1px solid #111; color: #ccc; }
+.breakdown-table tr:last-child td { border-bottom: none; }
+
+.empty { text-align: center; color: #444; padding: 40px; font-size: 14px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0d0d0d; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <h1>📊 Trading Journal Pro</h1>
+  <div class="right-info">
+    <div class="pnl-block">
+      <div class="pnl-label">TOTAL P&amp;L</div>
+      <div class="pnl-val" id="totalPnl">+$0.00</div>
+    </div>
+    <button class="btn-api-key" id="btnApiKey" onclick="openApiKeyModal()" title="ตั้งค่า AI Provider">
+      <span class="api-key-dot" id="apiKeyDot"></span>
+      <span id="apiKeyLabel">AI Provider</span>
+    </button>
+    <button class="btn-export" onclick="exportJSON()" title="Backup ข้อมูล">💾 Backup</button>
+    <button class="btn-export" onclick="importJSON()" title="Restore ข้อมูล">📂 Restore</button>
+  </div>
+</div>
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="doImport(event)">
+
+<!-- ===== AI PROVIDER MODAL ===== -->
+<div class="apikey-overlay" id="apikeyOverlay" onclick="closeApiKeyModal()">
+  <div class="apikey-modal" style="width:540px" onclick="event.stopPropagation()">
+    <h3>🤖 ตั้งค่า AI Provider</h3>
+    <p class="ak-desc">เลือก AI ที่ต้องการใช้สำหรับฟีเจอร์ Scan MT5 อัตโนมัติ<br>API Key จะถูกบันทึกใน localStorage ของเบราว์เซอร์นี้เท่านั้น</p>
+
+    <!-- Provider selector -->
+    <div class="provider-tabs" id="providerTabs">
+      <div class="provider-tab claude active" onclick="selectProvider('claude',this)">
+        <span class="p-icon">🟠</span>
+        <span class="p-name">Claude</span>
+      </div>
+      <div class="provider-tab gemini" onclick="selectProvider('gemini',this)">
+        <span class="p-icon">🔵</span>
+        <span class="p-name">Gemini</span>
+      </div>
+      <div class="provider-tab openai" onclick="selectProvider('openai',this)">
+        <span class="p-icon">🟢</span>
+        <span class="p-name">OpenAI</span>
+      </div>
+      <div class="provider-tab grok" onclick="selectProvider('grok',this)">
+        <span class="p-icon">⚫</span>
+        <span class="p-name">Grok (xAI)</span>
+      </div>
+      <div class="provider-tab deepseek" onclick="selectProvider('deepseek',this)">
+        <span class="p-icon">🔷</span>
+        <span class="p-name">DeepSeek</span>
+      </div>
+    </div>
+
+    <!-- Claude panel -->
+    <div class="provider-panel active" id="panel-claude">
+      <div class="ak-model-select">
+        <label>Model</label>
+        <select id="model-claude">
+          <option value="claude-opus-4-5">claude-opus-4-5 (Powerful)</option>
+          <option value="claude-sonnet-4-5">claude-sonnet-4-5 (Fast)</option>
+          <option value="claude-haiku-4-5-20251001">claude-haiku-4-5 (Economy)</option>
+        </select>
+      </div>
+      <div class="ak-input-wrap">
+        <input type="password" id="key-claude" placeholder="sk-ant-api03-..." autocomplete="off" oninput="onProviderKeyInput('claude')">
+        <button class="ak-toggle-vis" onclick="toggleKeyVis('claude')" title="แสดง/ซ่อน">👁</button>
+      </div>
+      <div class="ak-note">รับ Key ได้ที่ <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a> — ขึ้นต้นด้วย <code style="color:#e8a96a">sk-ant-</code></div>
+    </div>
+
+    <!-- Gemini panel -->
+    <div class="provider-panel" id="panel-gemini">
+      <div class="ak-model-select">
+        <label>Model</label>
+        <select id="model-gemini">
+          <option value="gemini-2.5-flash-lite">gemini-2.5-flash-lite ⭐ FREE (แนะนำ)</option>
+          <option value="gemini-2.5-flash">gemini-2.5-flash (Stable)</option>
+          <option value="gemini-2.5-pro">gemini-2.5-pro (Best)</option>
+          <option value="gemini-3-flash-preview">gemini-3-flash-preview (Newest)</option>
+        </select>
+      </div>
+      <div class="ak-input-wrap">
+        <input type="password" id="key-gemini" placeholder="AIza..." autocomplete="off" oninput="onProviderKeyInput('gemini')">
+        <button class="ak-toggle-vis" onclick="toggleKeyVis('gemini')" title="แสดง/ซ่อน">👁</button>
+      </div>
+      <div class="ak-note">รับ Key ได้ที่ <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a> — ขึ้นต้นด้วย <code style="color:#7baaf7">AIza</code></div>
+    </div>
+
+    <!-- OpenAI panel -->
+    <div class="provider-panel" id="panel-openai">
+      <div class="ak-model-select">
+        <label>Model</label>
+        <select id="model-openai">
+          <option value="gpt-4o">gpt-4o (Best Vision)</option>
+          <option value="gpt-4o-mini">gpt-4o-mini (Economy)</option>
+          <option value="gpt-4-turbo">gpt-4-turbo</option>
+        </select>
+      </div>
+      <div class="ak-input-wrap">
+        <input type="password" id="key-openai" placeholder="sk-..." autocomplete="off" oninput="onProviderKeyInput('openai')">
+        <button class="ak-toggle-vis" onclick="toggleKeyVis('openai')" title="แสดง/ซ่อน">👁</button>
+      </div>
+      <div class="ak-note">รับ Key ได้ที่ <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a> — ขึ้นต้นด้วย <code style="color:#34c99a">sk-</code></div>
+    </div>
+
+    <!-- Grok panel -->
+    <div class="provider-panel" id="panel-grok">
+      <div class="ak-model-select">
+        <label>Model</label>
+        <select id="model-grok">
+          <option value="grok-2-vision-1212">grok-2-vision (Vision)</option>
+          <option value="grok-2-1212">grok-2 (Text only)</option>
+          <option value="grok-3-mini-beta">grok-3-mini-beta</option>
+        </select>
+      </div>
+      <div class="ak-input-wrap">
+        <input type="password" id="key-grok" placeholder="xai-..." autocomplete="off" oninput="onProviderKeyInput('grok')">
+        <button class="ak-toggle-vis" onclick="toggleKeyVis('grok')" title="แสดง/ซ่อน">👁</button>
+      </div>
+      <div class="ak-note">รับ Key ได้ที่ <a href="https://console.x.ai/" target="_blank">console.x.ai</a> — ขึ้นต้นด้วย <code style="color:#ddd">xai-</code></div>
+    </div>
+
+    <!-- DeepSeek panel -->
+    <div class="provider-panel" id="panel-deepseek">
+      <div class="ak-model-select">
+        <label>Model</label>
+        <select id="model-deepseek">
+          <option value="deepseek-chat">deepseek-chat (Text)</option>
+          <option value="deepseek-reasoner">deepseek-reasoner (R1)</option>
+        </select>
+      </div>
+      <div class="ak-input-wrap">
+        <input type="password" id="key-deepseek" placeholder="sk-..." autocomplete="off" oninput="onProviderKeyInput('deepseek')">
+        <button class="ak-toggle-vis" onclick="toggleKeyVis('deepseek')" title="แสดง/ซ่อน">👁</button>
+      </div>
+      <div class="ak-note">รับ Key ได้ที่ <a href="https://platform.deepseek.com/api_keys" target="_blank">platform.deepseek.com</a> — ขึ้นต้นด้วย <code style="color:#8aaeff">sk-</code><br>⚠️ DeepSeek ไม่รองรับการอ่านรูปภาพ (Image mode)</div>
+    </div>
+
+    <div class="ak-status" id="akStatus" style="margin-top:10px"></div>
+    <div class="ak-actions">
+      <button class="btn btn-cancel" onclick="clearCurrentProviderKey()">🗑 ลบ Key นี้</button>
+      <button class="btn btn-cancel" onclick="closeApiKeyModal()">ยกเลิก</button>
+      <button class="btn btn-primary" onclick="saveApiKey()">💾 บันทึก</button>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('calendar', this)">📅 ปฏิทิน</button>
+  <button class="tab-btn" onclick="switchTab('trades', this)">📋 รายการเทรด</button>
+  <button class="tab-btn" onclick="switchTab('stats', this)">📈 สถิติ</button>
+</div>
+
+<!-- CALENDAR TAB -->
+<div class="content active" id="tab-calendar">
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <div class="cal-nav-left">
+        <button class="nav-btn prev" onclick="changeMonth(-1)">‹</button>
+        <h2 id="calTitle"></h2>
+        <button class="nav-btn next" onclick="changeMonth(1)">›</button>
+      </div>
+      <div class="cal-monthly-pnl">Monthly P/L: <span id="calMonthPnl">$0.00</span></div>
+      <div class="cal-nav-right">
+        <button class="btn-today" onclick="goToday()">Today</button>
+      </div>
+    </div>
+    <div class="calendar-grid" id="calGrid"></div>
+  </div>
+</div>
+
+<!-- TRADES TAB -->
+<div class="content" id="tab-trades">
+  <div class="toolbar">
+    <button class="add-trade-btn" onclick="openModal(null)">+ เพิ่มการเทรด</button>
+    <div class="filter-wrap">
+      <select id="filterResult" onchange="renderTradeTable()">
+        <option value="">ผลลัพธ์ทั้งหมด</option>
+        <option value="WIN">WIN</option>
+        <option value="LOSS">LOSS</option>
+        <option value="BE">BE</option>
+      </select>
+      <select id="filterSession" onchange="renderTradeTable()">
+        <option value="">ทุก Session</option>
+        <option value="London">London</option>
+        <option value="New York">New York</option>
+        <option value="Asian">Asian</option>
+        <option value="Overlap">Overlap</option>
+      </select>
+      <select id="filterSymbol" onchange="renderTradeTable()">
+        <option value="">ทุก Symbol</option>
+      </select>
+      <input type="text" id="filterSetup" placeholder="ค้นหา Setup..." oninput="renderTradeTable()" style="max-width:160px;">
+    </div>
+    <button class="btn-export" onclick="exportCSV()">📥 Export CSV</button>
+    <button class="btn-delete-all" onclick="deleteAllTrades()">🗑 ลบทั้งหมด</button>
+  </div>
+  <div class="trade-table-wrap" id="tradeTableWrap"></div>
+</div>
+
+<!-- STATS TAB -->
+<div class="content" id="tab-stats">
+  <div class="stats-grid" id="statsGrid"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:0;">
+    <div class="stats-breakdown" id="sessionBreakdown"></div>
+    <div class="stats-breakdown" id="setupBreakdown"></div>
+  </div>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3 id="modalTitle">➕ บันทึกการเทรด</h3>
+
+    <!-- AI SCAN SECTION -->
+    <div class="ai-scan-section">
+      <div class="ai-scan-header">
+        <span>🤖</span>
+        <h4>AI Scan จาก MT5</h4>
+        <span class="ai-badge" id="aiProviderBadge">AI POWERED</span>
+      </div>
+
+      <!-- Mode switch tabs -->
+      <div class="ai-mode-tabs">
+        <div class="ai-mode-btn active" onclick="switchAiMode('text', this)">📋 วาง Text / Order</div>
+        <div class="ai-mode-btn" onclick="switchAiMode('image', this)">🖼️ อัพโหลดรูป History</div>
+      </div>
+
+      <!-- Text mode -->
+      <div class="ai-mode-panel active" id="aiPanelText">
+        <textarea class="ai-paste-area" id="aiPasteText" placeholder="วาง (Paste) ข้อมูล Order จาก MT5 ที่นี่&#10;&#10;ตัวอย่าง:&#10;Deal #12345678 buy 0.10 XAUUSD at 2340.50&#10;2025.04.25 10:32:14 [XAUUSD] sell 0.05 at 1.08432 → 1.08510 profit: 38.90 USD&#10;Order #456789 XAUUSD Buy 0.20 lots OP:2310.50 CL:2325.00 P&amp;L: +290.00&#10;&#10;หรือ Copy ข้อความใดก็ได้จาก History / Journal ของ MT5"></textarea>
+      </div>
+
+      <!-- Image mode -->
+      <div class="ai-mode-panel" id="aiPanelImage">
+        <div class="img-upload-area" id="imgDropArea"
+             ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+          <div class="up-icon">📷</div>
+          <div class="up-text">คลิกเพื่อเลือกรูป หรือลากมาวางที่นี่</div>
+          <div class="up-sub">รองรับ PNG, JPG, JPEG, WEBP — Screenshot จาก MT5 History</div>
+          <input type="file" id="imgFileInput" accept="image/*" onchange="handleImageFile(event)">
+        </div>
+        <div class="img-preview-wrap" id="imgPreviewWrap">
+          <img id="imgPreview" src="" alt="preview">
+          <button class="img-clear" onclick="clearImage()">✕ ลบรูป</button>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
+        <button class="btn-ai" id="btnAiScan" onclick="runAiScan()">
+          <span id="aiScanIcon">✨</span> Scan &amp; กรอกอัตโนมัติ
+        </button>
+        <div class="ai-status" id="aiStatus"></div>
+      </div>
+    </div>
+
+    <div class="divider">— หรือกรอกเอง —</div>
+
+    <!-- FORM -->
+    <div class="form-row">
+      <div><label>วันที่</label><input type="date" id="f-date"></div>
+      <div>
+        <label>สินทรัพย์ / คู่สกุลเงิน</label>
+        <select id="f-symbol" onchange="onSymbolChange()">
+          <optgroup label="Precious Metals">
+            <option value="XAUUSD">XAUUSD — Gold</option>
+            <option value="XAGUSD">XAGUSD — Silver</option>
+          </optgroup>
+          <optgroup label="Majors">
+            <option value="EURUSD">EURUSD</option>
+            <option value="GBPUSD">GBPUSD</option>
+            <option value="USDJPY">USDJPY</option>
+            <option value="USDCHF">USDCHF</option>
+            <option value="AUDUSD">AUDUSD</option>
+            <option value="NZDUSD">NZDUSD</option>
+            <option value="USDCAD">USDCAD</option>
+          </optgroup>
+          <optgroup label="Minors / Crosses">
+            <option value="EURGBP">EURGBP</option>
+            <option value="EURJPY">EURJPY</option>
+            <option value="GBPJPY">GBPJPY</option>
+            <option value="AUDJPY">AUDJPY</option>
+            <option value="CADJPY">CADJPY</option>
+            <option value="CHFJPY">CHFJPY</option>
+            <option value="EURCHF">EURCHF</option>
+            <option value="EURAUD">EURAUD</option>
+            <option value="EURCAD">EURCAD</option>
+            <option value="EURNZD">EURNZD</option>
+            <option value="GBPAUD">GBPAUD</option>
+            <option value="GBPCAD">GBPCAD</option>
+            <option value="GBPCHF">GBPCHF</option>
+            <option value="GBPNZD">GBPNZD</option>
+            <option value="AUDCAD">AUDCAD</option>
+            <option value="AUDCHF">AUDCHF</option>
+            <option value="AUDNZD">AUDNZD</option>
+            <option value="NZDCAD">NZDCAD</option>
+            <option value="NZDCHF">NZDCHF</option>
+            <option value="NZDJPY">NZDJPY</option>
+            <option value="CADCHF">CADCHF</option>
+          </optgroup>
+          <optgroup label="Exotics">
+            <option value="USDZAR">USDZAR</option>
+            <option value="USDMXN">USDMXN</option>
+            <option value="USDSGD">USDSGD</option>
+            <option value="USDTRY">USDTRY</option>
+            <option value="USDCNH">USDCNH</option>
+          </optgroup>
+          <optgroup label="Indices (CFD)">
+            <option value="US30">US30 — Dow Jones</option>
+            <option value="US500">US500 — S&amp;P 500</option>
+            <option value="NAS100">NAS100 — Nasdaq</option>
+            <option value="GER40">GER40 — DAX</option>
+            <option value="UK100">UK100 — FTSE</option>
+            <option value="JPN225">JPN225 — Nikkei</option>
+          </optgroup>
+          <optgroup label="Crypto (CFD)">
+            <option value="BTCUSD">BTCUSD</option>
+            <option value="ETHUSD">ETHUSD</option>
+          </optgroup>
+          <optgroup label="Commodities">
+            <option value="USOIL">USOIL — WTI</option>
+            <option value="UKOIL">UKOIL — Brent</option>
+            <option value="NATGAS">NATGAS</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>ทิศทาง</label>
+        <select id="f-direction" onchange="autoCalcPnl()">
+          <option value="LONG">LONG (ซื้อ)</option>
+          <option value="SHORT">SHORT (ขาย)</option>
+        </select>
+      </div>
+      <div>
+        <label>ผลลัพธ์</label>
+        <select id="f-result" onchange="checkPnlResult()">
+          <option value="WIN">WIN</option>
+          <option value="LOSS">LOSS</option>
+          <option value="BE">BE (คุ้มทุน)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row three">
+      <div><label>ราคาเข้า</label><input type="number" id="f-entry" placeholder="0.00" step="any" oninput="autoCalcPnl()"></div>
+      <div><label>ราคาออก</label><input type="number" id="f-exit" placeholder="0.00" step="any" oninput="autoCalcPnl()"></div>
+      <div><label>Lot / Volume</label><input type="number" id="f-lot" placeholder="0.01" step="any" oninput="autoCalcPnl()"></div>
+    </div>
+    <div class="calc-note" id="pipValueNote" style="margin-bottom:12px;"></div>
+
+    <div class="form-row">
+      <div>
+        <label>P&amp;L ($) — กรอกเองหรือคำนวณอัตโนมัติ</label>
+        <input type="number" id="f-pnl" placeholder="30 หรือ -15" step="any" oninput="updatePnlDisplay(); checkPnlResult()">
+      </div>
+      <div>
+        <label>P&amp;L แสดงผล</label>
+        <div class="pnl-display" id="f-pnl-display">$0.00</div>
+      </div>
+    </div>
+
+    <div class="val-warn" id="valWarn">⚠️ P&amp;L ไม่สอดคล้องกับผลลัพธ์ที่เลือก (WIN ควรเป็น +, LOSS ควรเป็น -)</div>
+
+    <div class="form-row">
+      <div>
+        <label>เซสชัน</label>
+        <select id="f-session">
+          <option value="">-</option>
+          <option value="London">London</option>
+          <option value="New York">New York</option>
+          <option value="Asian">Asian</option>
+          <option value="Overlap">Overlap</option>
+        </select>
+      </div>
+      <div><label>Setup / กลยุทธ์</label><input type="text" id="f-setup" placeholder="Breakout, Reversal, SMC..."></div>
+    </div>
+    <div class="form-row">
+      <div><label>R:R</label><input type="text" id="f-rr" placeholder="1:2"></div>
+      <div></div>
+    </div>
+    <div class="form-row full">
+      <div><label>บันทึก / วิเคราะห์</label><textarea id="f-note" placeholder="สิ่งที่เรียนรู้, ความผิดพลาด, แผนต่อไป..."></textarea></div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-cancel" onclick="closeModal()">ยกเลิก</button>
+      <button class="btn btn-danger" id="btnDelete" style="display:none" onclick="deleteTrade()">ลบ</button>
+      <button class="btn btn-primary" onclick="saveTrade()">บันทึก</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MULTI-ORDER PREVIEW MODAL ===== -->
+<div class="multi-overlay" id="multiOverlay">
+  <div class="multi-modal" onclick="event.stopPropagation()">
+    <div class="multi-modal-head">
+      <div>
+        <h3>📋 ตรวจสอบออเดอร์ที่สแกนได้</h3>
+        <div class="multi-summary" id="multiSummary"></div>
+      </div>
+      <button class="btn btn-cancel" style="padding:6px 14px;font-size:12px" onclick="closeMultiModal()">✕ ปิด</button>
+    </div>
+    <div class="multi-modal-body" id="multiModalBody"></div>
+    <div class="multi-modal-foot">
+      <label class="multi-select-all">
+        <input type="checkbox" id="chkSelectAll" onchange="toggleSelectAll(this.checked)" checked>
+        เลือกทั้งหมด
+      </label>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span class="multi-saved-badge" id="multiSavedBadge"></span>
+        <button class="btn btn-cancel" onclick="closeMultiModal()">ยกเลิก</button>
+        <button class="btn-save-all" id="btnSaveAll" onclick="saveAllSelected()">💾 บันทึกออเดอร์ที่เลือก</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  PIP VALUES — Updated April 2026
+//  อัตราอ้างอิง ณ เดือนเมษายน 2026:
+//  XAUUSD ~$3,300/oz | USDJPY ~143 | USDCHF ~0.83
+//  USDCAD ~1.39 | AUDUSD ~0.6380 | NZDUSD ~0.5920
+//  GBPUSD ~1.3300 | EURUSD ~1.1350
+// ============================================================
+var PIP_VALUES = {
+  // ---- GOLD / SILVER ----
+  // XAUUSD: 1,000 points × 0.01 lot = $10
+  // → 1 point = $1/lot → pipValue=1, pipSize=1
+  // ตัวอย่าง: entry 3300, exit 3310 (+10 pts), 0.01 lot → +$0.10
+  //           entry 3300, exit 4300 (+1000 pts), 0.01 lot → +$10.00
+  XAUUSD: { pipValue: 100.00, pipSize: 1, lotSize: 100, desc: '$100/point/lot  (10pts × 0.01lot = $10)' },
+  // XAGUSD: contract = 5,000 oz, pip = $0.001 → $50/pip/lot (standard)
+  XAGUSD: { pipValue: 50.00, pipSize: 0.001, lotSize: 5000, desc: '$50/pip/lot  (เงิน | contract 5,000oz)' },
+
+  // ---- FX Majors ----
+  // USD-quoted pairs: pipValue = $10/pip/lot (คงที่)
+  EURUSD: { pipValue: 10.00, pipSize: 0.0001, lotSize: 100000, desc: '$10/pip/lot' },
+  GBPUSD: { pipValue: 10.00, pipSize: 0.0001, lotSize: 100000, desc: '$10/pip/lot' },
+  AUDUSD: { pipValue: 10.00, pipSize: 0.0001, lotSize: 100000, desc: '$10/pip/lot' },
+  NZDUSD: { pipValue: 10.00, pipSize: 0.0001, lotSize: 100000, desc: '$10/pip/lot' },
+  // Non-USD quote: pipValue = (pipSize × lotSize) / quote_rate
+  // USDCAD: pip = 0.0001 × 100000 / 1.39 = ~$7.19/pip/lot
+  USDCAD: { pipValue: 7.19,  pipSize: 0.0001, lotSize: 100000, desc: '~$7.19/pip/lot  (USDCAD ~1.39)' },
+  // USDCHF: pip = 0.0001 × 100000 / 0.83 = ~$12.05/pip/lot
+  USDCHF: { pipValue: 12.05, pipSize: 0.0001, lotSize: 100000, desc: '~$12.05/pip/lot  (USDCHF ~0.83)' },
+  // USDJPY: pip = 0.01 × 100000 / 143 = ~$6.99/pip/lot
+  USDJPY: { pipValue: 6.99,  pipSize: 0.01,   lotSize: 100000, desc: '~$6.99/pip/lot  (USDJPY ~143)' },
+
+  // ---- Crosses ----
+  // JPY crosses: pip = 0.01 × 100000 / USDJPY(143) = ~$6.99/pip/lot
+  EURJPY: { pipValue: 6.99,  pipSize: 0.01,   lotSize: 100000, desc: '~$6.99/pip/lot  (USDJPY ~143)' },
+  GBPJPY: { pipValue: 6.99,  pipSize: 0.01,   lotSize: 100000, desc: '~$6.99/pip/lot  (USDJPY ~143)' },
+  AUDJPY: { pipValue: 6.99,  pipSize: 0.01,   lotSize: 100000, desc: '~$6.99/pip/lot  (USDJPY ~143)' },
+  CADJPY: { pipValue: 6.99,  pipSize: 0.01,   lotSize: 100000, desc: '~$6.99/pip/lot  (USDJPY ~143)' },
+  CHFJPY: { pipValue: 6.99,  pipSize: 0.01,   lotSize: 100000, desc: '~$6.99/pip/lot  (USDJPY ~143)' },
+  NZDJPY: { pipValue: 6.99,  pipSize: 0.01,   lotSize: 100000, desc: '~$6.99/pip/lot  (USDJPY ~143)' },
+  // CHF crosses: pip = 0.0001 × 100000 / 0.83 = ~$12.05/pip/lot
+  EURCHF: { pipValue: 12.05, pipSize: 0.0001, lotSize: 100000, desc: '~$12.05/pip/lot  (USDCHF ~0.83)' },
+  GBPCHF: { pipValue: 12.05, pipSize: 0.0001, lotSize: 100000, desc: '~$12.05/pip/lot  (USDCHF ~0.83)' },
+  AUDCHF: { pipValue: 12.05, pipSize: 0.0001, lotSize: 100000, desc: '~$12.05/pip/lot  (USDCHF ~0.83)' },
+  NZDCHF: { pipValue: 12.05, pipSize: 0.0001, lotSize: 100000, desc: '~$12.05/pip/lot  (USDCHF ~0.83)' },
+  CADCHF: { pipValue: 12.05, pipSize: 0.0001, lotSize: 100000, desc: '~$12.05/pip/lot  (USDCHF ~0.83)' },
+  // GBP crosses: pip = 0.0001 × 100000 × GBPUSD(1.3300) = ~$13.30/pip/lot
+  EURGBP: { pipValue: 13.30, pipSize: 0.0001, lotSize: 100000, desc: '~$13.30/pip/lot  (GBPUSD ~1.33)' },
+  GBPAUD: { pipValue: 13.30, pipSize: 0.0001, lotSize: 100000, desc: '~$13.30/pip/lot  (GBPUSD ~1.33)' },
+  GBPCAD: { pipValue: 13.30, pipSize: 0.0001, lotSize: 100000, desc: '~$13.30/pip/lot  (GBPUSD ~1.33)' },
+  GBPNZD: { pipValue: 13.30, pipSize: 0.0001, lotSize: 100000, desc: '~$13.30/pip/lot  (GBPUSD ~1.33)' },
+  // EUR crosses (non-USD quote)
+  EURAUD: { pipValue: 6.38,  pipSize: 0.0001, lotSize: 100000, desc: '~$6.38/pip/lot  (AUDUSD ~0.638)' },
+  EURCAD: { pipValue: 7.19,  pipSize: 0.0001, lotSize: 100000, desc: '~$7.19/pip/lot  (USDCAD ~1.39)' },
+  EURNZD: { pipValue: 5.92,  pipSize: 0.0001, lotSize: 100000, desc: '~$5.92/pip/lot  (NZDUSD ~0.592)' },
+  // AUD crosses
+  AUDCAD: { pipValue: 7.19,  pipSize: 0.0001, lotSize: 100000, desc: '~$7.19/pip/lot  (USDCAD ~1.39)' },
+  AUDNZD: { pipValue: 5.92,  pipSize: 0.0001, lotSize: 100000, desc: '~$5.92/pip/lot  (NZDUSD ~0.592)' },
+  // NZD crosses
+  NZDCAD: { pipValue: 7.19,  pipSize: 0.0001, lotSize: 100000, desc: '~$7.19/pip/lot  (USDCAD ~1.39)' },
+
+  // ---- Exotics ----
+  // USDZAR: pip = 0.0001 × 100000 / ZAR(18.50) = ~$0.54/pip/lot
+  USDZAR: { pipValue: 0.54,  pipSize: 0.0001, lotSize: 100000, desc: '~$0.54/pip/lot  (USDZAR ~18.50)' },
+  // USDMXN: pip = 0.0001 × 100000 / MXN(19.80) = ~$0.51/pip/lot
+  USDMXN: { pipValue: 0.51,  pipSize: 0.0001, lotSize: 100000, desc: '~$0.51/pip/lot  (USDMXN ~19.80)' },
+  // USDSGD: pip = 0.0001 × 100000 / SGD(1.34) = ~$7.46/pip/lot
+  USDSGD: { pipValue: 7.46,  pipSize: 0.0001, lotSize: 100000, desc: '~$7.46/pip/lot  (USDSGD ~1.34)' },
+  // USDTRY: pip = 0.0001 × 100000 / TRY(38.50) = ~$0.26/pip/lot
+  USDTRY: { pipValue: 0.26,  pipSize: 0.0001, lotSize: 100000, desc: '~$0.26/pip/lot  (USDTRY ~38.50)' },
+  // USDCNH: pip = 0.0001 × 100000 / CNH(7.31) = ~$1.37/pip/lot
+  USDCNH: { pipValue: 1.37,  pipSize: 0.0001, lotSize: 100000, desc: '~$1.37/pip/lot  (USDCNH ~7.31)' },
+
+  // ---- Indices ----
+  US30:   { pipValue: 1.00, pipSize: 1,   lotSize: 1, desc: '$1/point/lot' },
+  US500:  { pipValue: 1.00, pipSize: 0.1, lotSize: 1, desc: '$1/0.1pt/lot' },
+  NAS100: { pipValue: 1.00, pipSize: 0.1, lotSize: 1, desc: '$1/0.1pt/lot' },
+  GER40:  { pipValue: 1.00, pipSize: 0.1, lotSize: 1, desc: '$1/0.1pt/lot' },
+  UK100:  { pipValue: 1.00, pipSize: 0.1, lotSize: 1, desc: '$1/0.1pt/lot' },
+  JPN225: { pipValue: 0.07, pipSize: 1,   lotSize: 1, desc: '~$0.07/pt/lot' },
+
+  // ---- Crypto CFD ----
+  BTCUSD: { pipValue: 1.00, pipSize: 1,    lotSize: 1, desc: '$1/pt/lot' },
+  ETHUSD: { pipValue: 1.00, pipSize: 0.01, lotSize: 1, desc: '$1/0.01pt/lot' },
+
+  // ---- Commodities ----
+  USOIL:  { pipValue: 10.00, pipSize: 0.01,  lotSize: 1000, desc: '$10/pip/lot' },
+  UKOIL:  { pipValue: 10.00, pipSize: 0.01,  lotSize: 1000, desc: '$10/pip/lot' },
+  NATGAS: { pipValue: 10.00, pipSize: 0.001, lotSize: 10000, desc: '$10/pip/lot' },
+};
+
+// ============================================================
+//  STATE
+// ============================================================
+var trades = [];
+var editId = null;
+var currentYear = new Date().getFullYear();
+var currentMonth = new Date().getMonth();
+var currentImageB64 = null;
+
+// load from localStorage (with error handling)
+try {
+  var raw = localStorage.getItem('tj_trades');
+  if (raw) trades = JSON.parse(raw);
+  if (!Array.isArray(trades)) trades = [];
+} catch(e) { trades = []; }
+
+// ============================================================
+//  UTILS
+// ============================================================
+function saveTrades() {
+  try {
+    localStorage.setItem('tj_trades', JSON.stringify(trades));
+  } catch(e) {
+    alert('⚠️ พื้นที่เก็บข้อมูลเต็ม (localStorage) กรุณา Backup แล้วลบรายการเก่า');
+  }
+}
+
+function fmt(n) {
+  var abs = Math.abs(n).toFixed(2);
+  return (n >= 0 ? '+$' : '-$') + abs;
+}
+
+function monthName(m) {
+  return ['January','February','March','April','May','June',
+          'July','August','September','October','November','December'][m];
+}
+
+function updateTotalPnl() {
+  var total = trades.reduce(function(s,t){ return s+(t.pnl||0); }, 0);
+  var el = document.getElementById('totalPnl');
+  el.textContent = fmt(total);
+  el.style.color = total >= 0 ? '#00e676' : '#ff5252';
+}
+
+// ============================================================
+//  BACKUP / RESTORE
+// ============================================================
+function exportJSON() {
+  var data = JSON.stringify(trades, null, 2);
+  var blob = new Blob([data], { type: 'application/json' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'trading_journal_backup_' + new Date().toISOString().split('T')[0] + '.json';
+  a.click();
+}
+function importJSON() { document.getElementById('importFile').click(); }
+function doImport(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      var imported = JSON.parse(ev.target.result);
+      if (!Array.isArray(imported)) throw new Error('Invalid format');
+      if (!confirm('นำเข้า ' + imported.length + ' รายการ? ข้อมูลเดิมจะถูกแทนที่')) return;
+      trades = imported;
+      saveTrades();
+      renderCalendar();
+      if (document.getElementById('tab-trades').classList.contains('active')) renderTradeTable();
+      if (document.getElementById('tab-stats').classList.contains('active')) renderStats();
+      alert('นำเข้าสำเร็จ ' + imported.length + ' รายการ');
+    } catch(err) { alert('ไฟล์ไม่ถูกต้อง: ' + err.message); }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+function exportCSV() {
+  if (!trades.length) { alert('ไม่มีข้อมูล'); return; }
+  var header = ['Date','Symbol','Direction','Result','Entry','Exit','Lot','PnL','Session','Setup','RR','Note'];
+  var rows = trades.map(function(t) {
+    return [t.date, t.symbol, t.direction, t.result,
+            t.entry||'', t.exitPrice||'', t.lot||'', t.pnl||0,
+            t.session||'', t.setup||'', t.rr||'',
+            '"'+(t.note||'').replace(/"/g,'""')+'"'];
+  });
+  var csv = [header].concat(rows).map(function(r){ return r.join(','); }).join('\n');
+  var blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'trading_journal_' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+}
+
+// ============================================================
+//  TABS
+// ============================================================
+function switchTab(name, btn) {
+  document.querySelectorAll('.content').forEach(function(el){ el.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(el){ el.classList.remove('active'); });
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+  if (name==='trades') renderTradeTable();
+  if (name==='stats') renderStats();
+  if (name==='calendar') renderCalendar();
+}
+
+// ============================================================
+//  CALENDAR
+// ============================================================
+function changeMonth(dir) {
+  currentMonth += dir;
+  if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+  if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
+  renderCalendar();
+}
+
+function goToday() {
+  var now = new Date();
+  currentYear  = now.getFullYear();
+  currentMonth = now.getMonth();
+  renderCalendar();
+}
+function renderCalendar() {
+  var grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  // Headers
+  var headers = ['SUN','MON','TUE','WED','THU','FRI','SAT','WEEKLY'];
+  headers.forEach(function(h) {
+    var el = document.createElement('div');
+    el.className = 'cal-head' + (h==='WEEKLY' ? ' weekly-head' : '');
+    el.textContent = h;
+    grid.appendChild(el);
+  });
+
+  var today = new Date();
+  var firstDay  = new Date(currentYear, currentMonth, 1).getDay();
+  var daysInMonth = new Date(currentYear, currentMonth+1, 0).getDate();
+  var daysInPrev  = new Date(currentYear, currentMonth, 0).getDate();
+
+  // Monthly P/L
+  var monthPnl = 0;
+  trades.forEach(function(t) {
+    var d = new Date(t.date+'T00:00:00');
+    if (d.getFullYear()===currentYear && d.getMonth()===currentMonth)
+      monthPnl += (t.pnl||0);
+  });
+  document.getElementById('calTitle').textContent = monthName(currentMonth)+' '+currentYear;
+  var mpEl = document.getElementById('calMonthPnl');
+  mpEl.textContent = fmt(monthPnl);
+  mpEl.style.color = monthPnl >= 0 ? '#00e676' : '#ff5252';
+
+  // Group trades by date
+  var byDate = {};
+  trades.forEach(function(t) {
+    if (!byDate[t.date]) byDate[t.date] = [];
+    byDate[t.date].push(t);
+  });
+
+  // Find max abs pnl in this month for intensity scaling
+  var maxAbs = 0;
+  for (var d0 = 1; d0 <= daysInMonth; d0++) {
+    var mm0 = String(currentMonth+1).padStart(2,'0');
+    var ds0 = currentYear+'-'+mm0+'-'+String(d0).padStart(2,'0');
+    var dt0 = byDate[ds0]||[];
+    if (dt0.length > 0) {
+      var p0 = Math.abs(dt0.reduce(function(s,t){ return s+(t.pnl||0); },0));
+      if (p0 > maxAbs) maxAbs = p0;
+    }
+  }
+
+  // Build cells
+  var cells = [];
+  for (var i = firstDay-1; i >= 0; i--) cells.push({ day: daysInPrev-i, cur: false });
+  for (var d = 1; d <= daysInMonth; d++) cells.push({ day: d, cur: true });
+  var remaining = (Math.ceil(cells.length/7)*7) - cells.length;
+  for (var d2 = 1; d2 <= remaining; d2++) cells.push({ day: d2, cur: false });
+
+  var totalWeeks = cells.length/7;
+
+  for (var w = 0; w < totalWeeks; w++) {
+    var weekPnl = 0, weekTrades = 0, tradeDays = 0, hasWeekTrades = false;
+
+    for (var dd = 0; dd < 7; dd++) {
+      var cell = cells[w*7+dd];
+      var el = document.createElement('div');
+
+      if (!cell.cur) {
+        el.className = 'cal-day other-month';
+        el.innerHTML = '<div class="day-num">'+cell.day+'</div>';
+        grid.appendChild(el);
+        continue;
+      }
+
+      // Current month day
+      var isToday = today.getFullYear()===currentYear &&
+                    today.getMonth()===currentMonth &&
+                    today.getDate()===cell.day;
+
+      var mm  = String(currentMonth+1).padStart(2,'0');
+      var dayStr = String(cell.day).padStart(2,'0');
+      var dateStr = currentYear+'-'+mm+'-'+dayStr;
+      var dayTrades = byDate[dateStr]||[];
+      var dayPnl = dayTrades.reduce(function(s,t){ return s+(t.pnl||0); }, 0);
+
+      // Build class list
+      var cls = 'cal-day';
+      if (isToday) cls += ' today';
+
+      if (dayTrades.length > 0) {
+        weekPnl    += dayPnl;
+        weekTrades += dayTrades.length;
+        tradeDays++;
+        hasWeekTrades = true;
+
+        var isProfit = dayPnl >= 0;
+        cls += isProfit ? ' day-profit' : ' day-loss';
+
+        // Intensity level (1–4) based on % of max
+        var ratio = maxAbs > 0 ? Math.abs(dayPnl) / maxAbs : 0;
+        var lvl = ratio >= 0.75 ? 4 : ratio >= 0.50 ? 3 : ratio >= 0.25 ? 2 : 1;
+        if (lvl >= 2) cls += ' lvl'+lvl;
+      }
+
+      el.className = cls;
+
+      // Inner HTML
+      var inner = '<div class="day-num">'+cell.day+'</div>';
+      if (dayTrades.length > 0) {
+        inner += '<div class="day-pnl '+(dayPnl>=0?'profit':'loss')+'">'+fmt(dayPnl)+'</div>';
+        inner += '<div class="day-trades-badge">'+dayTrades.length+' trades</div>';
+      } else {
+        inner += '<div class="day-no-trade">—</div>';
+      }
+      el.innerHTML = inner;
+      (function(ds){ el.addEventListener('click', function(){ openModalWithDate(ds); }); })(dateStr);
+      grid.appendChild(el);
+    }
+
+    // Weekly summary cell
+    var wEl = document.createElement('div');
+    var wCls = 'cal-weekly';
+    if (hasWeekTrades) wCls += weekPnl >= 0 ? ' w-profit' : ' w-loss';
+    wEl.className = wCls;
+
+    var wNum = String(w+1);
+    var wPnlCls = hasWeekTrades ? (weekPnl>=0?'profit':'loss') : 'zero';
+    wEl.innerHTML =
+      '<div class="w-label">Week '+wNum+'</div>' +
+      '<div class="w-pnl '+wPnlCls+'">'+(hasWeekTrades ? fmt(weekPnl) : '—')+'</div>' +
+      '<div class="w-trades">'+(weekTrades>0 ? weekTrades+' trades' : 'no trades')+'</div>';
+    grid.appendChild(wEl);
+  }
+
+  updateTotalPnl();
+}
+
+// ============================================================
+//  AI MODE SWITCH
+// ============================================================
+function switchAiMode(mode, btn) {
+  document.querySelectorAll('.ai-mode-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.ai-mode-panel').forEach(function(p){ p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('aiPanel'+mode.charAt(0).toUpperCase()+mode.slice(1)).classList.add('active');
+}
+
+// ============================================================
+//  IMAGE UPLOAD (for MT5 History screenshot)
+// ============================================================
+function handleDragOver(e) {
+  e.preventDefault();
+  document.getElementById('imgDropArea').classList.add('drag-over');
+}
+function handleDragLeave(e) {
+  document.getElementById('imgDropArea').classList.remove('drag-over');
+}
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('imgDropArea').classList.remove('drag-over');
+  var file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) loadImageFile(file);
+}
+function handleImageFile(e) {
+  var file = e.target.files[0];
+  if (file) loadImageFile(file);
+}
+function loadImageFile(file) {
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    var b64Full = ev.target.result;
+    // b64Full = "data:image/png;base64,XXXX"
+    currentImageB64 = b64Full.split(',')[1];
+    var mediaTypeMatch = b64Full.match(/data:([^;]+);/);
+    currentImageMediaType = mediaTypeMatch ? mediaTypeMatch[1] : 'image/png';
+
+    document.getElementById('imgPreview').src = b64Full;
+    document.getElementById('imgPreviewWrap').style.display = 'block';
+    document.getElementById('aiStatus').textContent = 'รูปพร้อมแล้ว กด Scan เพื่อวิเคราะห์';
+    document.getElementById('aiStatus').className = 'ai-status ok';
+  };
+  reader.readAsDataURL(file);
+}
+var currentImageMediaType = 'image/png';
+
+function clearImage() {
+  currentImageB64 = null;
+  document.getElementById('imgPreview').src = '';
+  document.getElementById('imgPreviewWrap').style.display = 'none';
+  document.getElementById('imgFileInput').value = '';
+  document.getElementById('aiStatus').textContent = '';
+  document.getElementById('aiStatus').className = 'ai-status';
+}
+
+// ============================================================
+//  SYMBOL / PIP VALUE
+// ============================================================
+function onSymbolChange() {
+  var sym = document.getElementById('f-symbol').value;
+  var info = PIP_VALUES[sym];
+  var noteEl = document.getElementById('pipValueNote');
+  if (info) {
+    noteEl.textContent = '💡 Pip Value: ' + info.desc;
+    noteEl.style.color = '#5c8bc0';
+  } else {
+    noteEl.textContent = 'Pip Value: ไม่พบข้อมูล';
+    noteEl.style.color = '#666';
+  }
+  autoCalcPnl();
+}
+
+// ============================================================
+//  AUTO CALC P&L
+// ============================================================
+function autoCalcPnl() {
+  var sym   = document.getElementById('f-symbol').value;
+  var entry = parseFloat(document.getElementById('f-entry').value);
+  var exit  = parseFloat(document.getElementById('f-exit').value);
+  var lot   = parseFloat(document.getElementById('f-lot').value);
+  var dir   = document.getElementById('f-direction').value;
+  if (!sym || isNaN(entry) || isNaN(exit) || isNaN(lot) || lot<=0) return;
+  var info = PIP_VALUES[sym];
+  if (!info) return;
+  var priceDiff = dir==='LONG' ? (exit-entry) : (entry-exit);
+  var pips = priceDiff / info.pipSize;
+  var pnl  = Math.round(pips * info.pipValue * lot * 100) / 100;
+  document.getElementById('f-pnl').value = pnl;
+  updatePnlDisplay();
+  checkPnlResult();
+}
+
+// ============================================================
+//  PNL DISPLAY + VALIDATION
+// ============================================================
+function updatePnlDisplay() {
+  var pnl = parseFloat(document.getElementById('f-pnl').value)||0;
+  var el = document.getElementById('f-pnl-display');
+  el.textContent = fmt(pnl);
+  el.className = 'pnl-display '+(pnl>0?'profit':(pnl<0?'loss':''));
+}
+function checkPnlResult() {
+  var pnl    = parseFloat(document.getElementById('f-pnl').value)||0;
+  var result = document.getElementById('f-result').value;
+  var mismatch = (result==='WIN'&&pnl<0)||(result==='LOSS'&&pnl>0);
+  document.getElementById('valWarn').style.display = mismatch ? 'block' : 'none';
+}
+
+// ============================================================
+//  AI SCAN — Multi-provider: Claude / Gemini / OpenAI / Grok / DeepSeek
+// ============================================================
+function runAiScan() {
+  var btn      = document.getElementById('btnAiScan');
+  var statusEl = document.getElementById('aiStatus');
+  var iconEl   = document.getElementById('aiScanIcon');
+
+  var isImageMode = document.getElementById('aiPanelImage').classList.contains('active');
+
+  if (isImageMode) {
+    if (!currentImageB64) { alert('กรุณาอัพโหลดรูป MT5 History ก่อน'); return; }
+  } else {
+    var text = document.getElementById('aiPasteText').value.trim();
+    if (!text) { alert('กรุณาวางข้อมูล MT5 ก่อน'); return; }
+  }
+
+  var apiKey = getApiKey();
+  if (!apiKey) {
+    statusEl.className = 'ai-status err';
+    statusEl.textContent = '❌ ยังไม่ได้ตั้งค่า API Key — กดปุ่ม "AI Provider" ที่ navbar';
+    return;
+  }
+
+  // DeepSeek does not support images
+  if (isImageMode && currentProvider === 'deepseek') {
+    statusEl.className = 'ai-status err';
+    statusEl.textContent = '❌ DeepSeek ไม่รองรับการอ่านรูปภาพ กรุณาเปลี่ยนเป็น Text mode หรือเลือก AI อื่น';
+    return;
+  }
+
+  btn.disabled = true;
+  iconEl.textContent = '⏳';
+  statusEl.className = 'ai-status loading';
+  var providerName = AI_PROVIDERS[currentProvider]?.name || currentProvider;
+  statusEl.textContent = '🔍 กำลังวิเคราะห์ด้วย ' + providerName + '...';
+
+  var systemPrompt =
+    'You are an expert MT5 (MetaTrader 5) trading history parser. ' +
+    'Extract ALL trading orders/deals from the given text or image. ' +
+    'Return ONLY a valid JSON array — no markdown, no explanation, only a JSON array. ' +
+    'Each element in the array represents one closed trade with these fields:\n' +
+    '  "date": string YYYY-MM-DD\n' +
+    '  "symbol": normalize (XAUUSD not GOLD, EURUSD not EUR/USD, remove spaces/slashes)\n' +
+    '  "direction": "LONG" if buy/long, "SHORT" if sell/short\n' +
+    '  "result": "WIN" if profit>0, "LOSS" if profit<0, "BE" if 0\n' +
+    '  "entry": number or null\n' +
+    '  "exit": number or null\n' +
+    '  "lot": number or null\n' +
+    '  "pnl": number (USD, positive=profit, negative=loss)\n' +
+    '  "rr": string like "1:2" or ""\n' +
+    '  "session": "London","New York","Asian","Overlap" or ""\n' +
+    '  "note": other useful info or ""\n' +
+    'IMPORTANT: Extract EVERY closed trade visible. If only 1 trade, still return an array with 1 element.\n' +
+    'In MT5 History, each row with a profit/loss value is one closed trade. Extract all of them.\n' +
+    'Return ONLY the JSON array. Example with 2 trades:\n' +
+    '[{"date":"2025-04-25","symbol":"XAUUSD","direction":"LONG","result":"WIN","entry":2310.50,"exit":2325.00,"lot":0.10,"pnl":145.00,"rr":"1:2","session":"London","note":""},{"date":"2025-04-25","symbol":"EURUSD","direction":"SHORT","result":"LOSS","entry":1.0850,"exit":1.0870,"lot":0.05,"pnl":-10.00,"rr":"","session":"New York","note":""}]';
+
+  var model = getSelectedModel(currentProvider);
+  var promise;
+
+  if (currentProvider === 'claude') {
+    var userContent = isImageMode
+      ? [{ type:'image', source:{ type:'base64', media_type:currentImageMediaType, data:currentImageB64 }},
+         { type:'text', text:'Extract trading order details from this MT5 screenshot. Return only JSON.' }]
+      : document.getElementById('aiPasteText').value.trim();
+    promise = fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({ model: model||'claude-opus-4-5', max_tokens: 2000, system: systemPrompt, messages:[{ role:'user', content:userContent }] })
+    }).then(function(r){ return r.json(); }).then(function(data) {
+      if (data.error) throw new Error(data.error.message || 'Claude API error');
+      return data.content.map(function(c){ return c.text||''; }).join('');
+    });
+
+  } else if (currentProvider === 'gemini') {
+    var geminiModel = model || 'gemini-2.5-flash-lite';
+    var parts = [];
+    if (isImageMode) {
+      parts.push({ inline_data: { mime_type: currentImageMediaType, data: currentImageB64 } });
+      parts.push({ text: 'This is a screenshot from MT5 (MetaTrader 5) trading history. Extract the trading order details and return ONLY a JSON object as specified in the system instruction.' });
+    } else {
+      parts.push({ text: 'Extract trading order details from the following MT5 data and return ONLY a JSON object as specified:\n\n' + document.getElementById('aiPasteText').value.trim() });
+    }
+    promise = fetch('https://generativelanguage.googleapis.com/v1beta/models/' + geminiModel + ':generateContent?key=' + apiKey, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: systemPrompt }] },
+        contents: [{ role: 'user', parts: parts }],
+        generationConfig: { maxOutputTokens: 2000, temperature: 0.1, responseMimeType: 'application/json' }
+      })
+    }).then(function(r){ return r.json(); }).then(function(data) {
+      if (data.error) throw new Error(data.error.message || 'Gemini API error: ' + JSON.stringify(data.error));
+      var text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!text) throw new Error('Gemini ไม่มี response — ตรวจสอบ API Key และ quota');
+      return text;
+    });
+
+  } else if (currentProvider === 'openai') {
+    var oaiModel = model || 'gpt-4o';
+    var oaiMessages;
+    if (isImageMode) {
+      oaiMessages = [
+        { role:'system', content: systemPrompt },
+        { role:'user', content:[
+          { type:'image_url', image_url:{ url:'data:'+currentImageMediaType+';base64,'+currentImageB64 }},
+          { type:'text', text:'Extract trading order details. Return only JSON.' }
+        ]}
+      ];
+    } else {
+      oaiMessages = [
+        { role:'system', content: systemPrompt },
+        { role:'user', content: document.getElementById('aiPasteText').value.trim() }
+      ];
+    }
+    promise = fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+      body: JSON.stringify({ model: oaiModel, max_tokens: 2000, messages: oaiMessages })
+    }).then(function(r){ return r.json(); }).then(function(data) {
+      if (data.error) throw new Error(data.error.message || 'OpenAI API error');
+      return data.choices?.[0]?.message?.content || '';
+    });
+
+  } else if (currentProvider === 'grok') {
+    var grokModel = model || 'grok-2-vision-1212';
+    var grokMessages;
+    if (isImageMode) {
+      grokMessages = [
+        { role:'system', content: systemPrompt },
+        { role:'user', content:[
+          { type:'image_url', image_url:{ url:'data:'+currentImageMediaType+';base64,'+currentImageB64 }},
+          { type:'text', text:'Extract trading order details. Return only JSON.' }
+        ]}
+      ];
+    } else {
+      grokMessages = [
+        { role:'system', content: systemPrompt },
+        { role:'user', content: document.getElementById('aiPasteText').value.trim() }
+      ];
+    }
+    promise = fetch('https://api.x.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+      body: JSON.stringify({ model: grokModel, max_tokens: 2000, messages: grokMessages })
+    }).then(function(r){ return r.json(); }).then(function(data) {
+      if (data.error) throw new Error(data.error.message || 'Grok API error');
+      return data.choices?.[0]?.message?.content || '';
+    });
+
+  } else if (currentProvider === 'deepseek') {
+    var dsModel = model || 'deepseek-chat';
+    promise = fetch('https://api.deepseek.com/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+      body: JSON.stringify({ model: dsModel, max_tokens: 2000, messages:[
+        { role:'system', content: systemPrompt },
+        { role:'user', content: document.getElementById('aiPasteText').value.trim() }
+      ]})
+    }).then(function(r){ return r.json(); }).then(function(data) {
+      if (data.error) throw new Error(data.error.message || 'DeepSeek API error');
+      return data.choices?.[0]?.message?.content || '';
+    });
+
+  } else {
+    statusEl.className = 'ai-status err';
+    statusEl.textContent = '❌ ไม่รู้จัก Provider: ' + currentProvider;
+    btn.disabled = false; iconEl.textContent = '✨';
+    return;
+  }
+
+  promise.then(function(raw) {
+    raw = raw.replace(/```json|```/g,'').trim();
+    // Try array first, then single object wrapped in array
+    var parsed;
+    var arrMatch = raw.match(/\[[\s\S]*\]/);
+    var objMatch = raw.match(/\{[\s\S]*\}/);
+    if (arrMatch) {
+      parsed = JSON.parse(arrMatch[0]);
+      if (!Array.isArray(parsed)) parsed = [parsed];
+    } else if (objMatch) {
+      parsed = [JSON.parse(objMatch[0])];
+    } else {
+      throw new Error('AI ไม่ตอบกลับเป็น JSON — ลองใหม่');
+    }
+    if (!parsed.length) throw new Error('ไม่พบออเดอร์ในรูป/ข้อมูลนี้');
+
+    if (parsed.length === 1) {
+      // Single order — fill form directly as before
+      fillFormFromAI(parsed[0]);
+      statusEl.className = 'ai-status ok';
+      statusEl.textContent = '✅ สแกนได้ 1 ออเดอร์ด้วย ' + providerName + ' — ตรวจสอบแล้วกด บันทึก';
+    } else {
+      // Multiple orders — show preview modal
+      statusEl.className = 'ai-status ok';
+      statusEl.textContent = '✅ สแกนได้ ' + parsed.length + ' ออเดอร์ — กำลังเปิดหน้า Preview...';
+      openMultiOrderModal(parsed, providerName);
+    }
+  }).catch(function(err) {
+    statusEl.className = 'ai-status err';
+    statusEl.textContent = '❌ Error: ' + err.message;
+  }).finally(function() {
+    btn.disabled = false;
+    iconEl.textContent = '✨';
+  });
+}
+
+function fillFormFromAI(parsed) {
+  if (parsed.date) document.getElementById('f-date').value = parsed.date;
+  if (parsed.symbol) {
+    var symClean = (parsed.symbol||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+    var sel = document.getElementById('f-symbol');
+    var found = false;
+    for (var i=0; i<sel.options.length; i++) {
+      if (sel.options[i].value===symClean) { sel.value=symClean; found=true; break; }
+    }
+    if (!found) {
+      // try partial match (e.g. "GOLD" → "XAUUSD")
+      var aliases = { GOLD:'XAUUSD', SILVER:'XAGUSD', OIL:'USOIL', BTC:'BTCUSD', ETH:'ETHUSD' };
+      if (aliases[symClean]) sel.value = aliases[symClean];
+    }
+    onSymbolChange();
+  }
+  if (parsed.direction) document.getElementById('f-direction').value = parsed.direction==='SHORT'?'SHORT':'LONG';
+  if (parsed.result) document.getElementById('f-result').value = ['WIN','LOSS','BE'].includes(parsed.result)?parsed.result:'WIN';
+  if (parsed.entry!==null&&parsed.entry!==undefined) document.getElementById('f-entry').value = parsed.entry;
+  if (parsed.exit!==null&&parsed.exit!==undefined) document.getElementById('f-exit').value = parsed.exit;
+  if (parsed.lot!==null&&parsed.lot!==undefined) document.getElementById('f-lot').value = parsed.lot;
+  if (parsed.pnl!==null&&parsed.pnl!==undefined) document.getElementById('f-pnl').value = parsed.pnl;
+  if (parsed.rr) document.getElementById('f-rr').value = parsed.rr;
+  if (parsed.session) document.getElementById('f-session').value = parsed.session||'';
+  if (parsed.note) document.getElementById('f-note').value = parsed.note;
+  updatePnlDisplay();
+  checkPnlResult();
+}
+
+// ============================================================
+//  MULTI-ORDER PREVIEW & BULK SAVE
+// ============================================================
+var multiOrderList = [];
+
+function normalizeOrder(o) {
+  var aliases = { GOLD:'XAUUSD', SILVER:'XAGUSD', OIL:'USOIL', BTC:'BTCUSD', ETH:'ETHUSD' };
+  var symRaw = (o.symbol||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+  var sym = aliases[symRaw] || symRaw || 'XAUUSD';
+  var dir = (o.direction||'').toUpperCase() === 'SHORT' ? 'SHORT' : 'LONG';
+  var res = ['WIN','LOSS','BE'].includes((o.result||'').toUpperCase()) ? o.result.toUpperCase() : 'WIN';
+  var pnl = parseFloat(o.pnl) || 0;
+  return {
+    date:      o.date || new Date().toISOString().split('T')[0],
+    symbol:    sym,
+    direction: dir,
+    result:    res,
+    entry:     o.entry !== null && o.entry !== undefined ? parseFloat(o.entry) : null,
+    exitPrice: o.exit  !== null && o.exit  !== undefined ? parseFloat(o.exit)  : null,
+    lot:       o.lot   !== null && o.lot   !== undefined ? parseFloat(o.lot)   : null,
+    pnl:       pnl,
+    rr:        o.rr    || '',
+    session:   o.session || '',
+    setup:     o.setup || '',
+    note:      o.note  || ''
+  };
+}
+
+function openMultiOrderModal(orders, providerName) {
+  multiOrderList = orders.map(normalizeOrder);
+  var body = document.getElementById('multiModalBody');
+  var html = '';
+  multiOrderList.forEach(function(o, i) {
+    var pnlCls = o.pnl > 0 ? 'profit' : (o.pnl < 0 ? 'loss' : 'be');
+    var pnlStr = (o.pnl >= 0 ? '+$' : '-$') + Math.abs(o.pnl).toFixed(2);
+    var dirCls = o.direction === 'LONG' ? 'oc-dir-long' : 'oc-dir-short';
+    html +=
+      '<div class="order-card selected" id="oc-'+i+'">' +
+        '<div class="oc-check"><input type="checkbox" checked id="ochk-'+i+'" onchange="toggleOrderCard('+i+',this.checked)"></div>' +
+        '<div class="oc-num">#'+(i+1)+'</div>' +
+        '<div class="oc-body">' +
+          '<div class="oc-field"><div class="oc-lbl">DATE</div><div class="oc-val">'+o.date+'</div></div>' +
+          '<div class="oc-field"><div class="oc-lbl">SYMBOL</div><div class="oc-val oc-symbol">'+o.symbol+'</div></div>' +
+          '<div class="oc-field"><div class="oc-lbl">DIRECTION</div><div class="oc-val '+dirCls+'">'+o.direction+'</div></div>' +
+          '<div class="oc-field"><div class="oc-lbl">P&L</div><div class="oc-val '+pnlCls+'">'+pnlStr+'</div></div>' +
+          '<div class="oc-field"><div class="oc-lbl">ENTRY</div><div class="oc-val">'+(o.entry !== null ? o.entry : '—')+'</div></div>' +
+          '<div class="oc-field"><div class="oc-lbl">EXIT</div><div class="oc-val">'+(o.exitPrice !== null ? o.exitPrice : '—')+'</div></div>' +
+          '<div class="oc-field"><div class="oc-lbl">LOT</div><div class="oc-val">'+(o.lot !== null ? o.lot : '—')+'</div></div>' +
+          '<div class="oc-field"><div class="oc-lbl">RESULT</div><div class="oc-val '+pnlCls+'">'+o.result+'</div></div>' +
+          (o.session ? '<div class="oc-field"><div class="oc-lbl">SESSION</div><div class="oc-val">'+o.session+'</div></div>' : '') +
+          (o.rr      ? '<div class="oc-field"><div class="oc-lbl">R:R</div><div class="oc-val">'+o.rr+'</div></div>' : '') +
+          (o.note    ? '<div class="oc-field" style="grid-column:1/-1"><div class="oc-lbl">NOTE</div><div class="oc-val" style="color:#888;font-weight:400">'+o.note+'</div></div>' : '') +
+        '</div>' +
+      '</div>';
+  });
+  body.innerHTML = html;
+
+  var totalPnl = multiOrderList.reduce(function(s,o){ return s+o.pnl; }, 0);
+  var pnlStr = (totalPnl >= 0 ? '+$' : '-$') + Math.abs(totalPnl).toFixed(2);
+  document.getElementById('multiSummary').textContent =
+    'สแกนด้วย ' + providerName + ' — พบ ' + multiOrderList.length + ' ออเดอร์  |  รวม P&L: ' + pnlStr;
+
+  document.getElementById('chkSelectAll').checked = true;
+  document.getElementById('multiSavedBadge').style.display = 'none';
+  document.getElementById('btnSaveAll').disabled = false;
+  document.getElementById('btnSaveAll').textContent = '💾 บันทึกออเดอร์ที่เลือก';
+  document.getElementById('multiOverlay').classList.add('open');
+}
+
+function toggleOrderCard(idx, checked) {
+  var card = document.getElementById('oc-'+idx);
+  if (checked) {
+    card.classList.add('selected');
+    card.classList.remove('excluded');
+  } else {
+    card.classList.remove('selected');
+    card.classList.add('excluded');
+  }
+  // update select-all state
+  var all = multiOrderList.every(function(_, i){ return document.getElementById('ochk-'+i).checked; });
+  var none = multiOrderList.every(function(_, i){ return !document.getElementById('ochk-'+i).checked; });
+  document.getElementById('chkSelectAll').indeterminate = !all && !none;
+  document.getElementById('chkSelectAll').checked = all;
+}
+
+function toggleSelectAll(checked) {
+  multiOrderList.forEach(function(_, i) {
+    document.getElementById('ochk-'+i).checked = checked;
+    toggleOrderCard(i, checked);
+  });
+}
+
+function saveAllSelected() {
+  var selected = multiOrderList.filter(function(_, i) {
+    return document.getElementById('ochk-'+i).checked;
+  });
+  if (!selected.length) { alert('กรุณาเลือกออเดอร์อย่างน้อย 1 รายการ'); return; }
+
+  selected.forEach(function(o) {
+    trades.push({ id: Date.now() + Math.random(), date: o.date, symbol: o.symbol,
+      direction: o.direction, result: o.result, entry: o.entry, exitPrice: o.exitPrice,
+      lot: o.lot, pnl: o.pnl, session: o.session, setup: o.setup, rr: o.rr, note: o.note });
+  });
+  saveTrades();
+  renderCalendar();
+  if (document.getElementById('tab-trades').classList.contains('active')) renderTradeTable();
+  if (document.getElementById('tab-stats').classList.contains('active')) renderStats();
+
+  var badge = document.getElementById('multiSavedBadge');
+  badge.textContent = '✅ บันทึกแล้ว ' + selected.length + ' ออเดอร์';
+  badge.style.display = 'inline';
+  document.getElementById('btnSaveAll').disabled = true;
+  document.getElementById('btnSaveAll').textContent = '✅ บันทึกแล้ว';
+  setTimeout(function(){ closeMultiModal(); }, 1200);
+}
+
+function closeMultiModal() {
+  document.getElementById('multiOverlay').classList.remove('open');
+}
+
+// ============================================================
+//  MODAL
+// ============================================================
+function openModalWithDate(dateStr) {
+  resetForm();
+  document.getElementById('f-date').value = dateStr;
+  document.getElementById('modalTitle').textContent = '➕ เพิ่มเทรดวันที่ '+dateStr;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function openModal(id) {
+  resetForm();
+  if (id!==null&&id!==undefined) {
+    editId = id;
+    var t = null;
+    for (var i=0; i<trades.length; i++) {
+      if (trades[i].id===id) { t=trades[i]; break; }
+    }
+    if (!t) return;
+    document.getElementById('f-date').value = t.date;
+    document.getElementById('f-direction').value = t.direction;
+    document.getElementById('f-result').value = t.result;
+    document.getElementById('f-entry').value = t.entry!==null&&t.entry!==undefined?t.entry:'';
+    document.getElementById('f-exit').value = t.exitPrice!==null&&t.exitPrice!==undefined?t.exitPrice:'';
+    document.getElementById('f-lot').value = t.lot!==null&&t.lot!==undefined?t.lot:'';
+    document.getElementById('f-pnl').value = t.pnl||'';
+    document.getElementById('f-session').value = t.session||'';
+    document.getElementById('f-setup').value = t.setup||'';
+    document.getElementById('f-rr').value = t.rr||'';
+    document.getElementById('f-note').value = t.note||'';
+    // symbol
+    var sel = document.getElementById('f-symbol');
+    for (var j=0; j<sel.options.length; j++) {
+      if (sel.options[j].value===(t.symbol||'').toUpperCase()) { sel.value=sel.options[j].value; break; }
+    }
+    onSymbolChange();
+    document.getElementById('modalTitle').textContent = '✏️ แก้ไขการเทรด';
+    document.getElementById('btnDelete').style.display = 'inline-block';
+    updatePnlDisplay();
+    checkPnlResult();
+  } else {
+    editId = null;
+    document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
+    document.getElementById('modalTitle').textContent = '➕ บันทึกการเทรด';
+    onSymbolChange();
+  }
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function resetForm() {
+  editId = null;
+  currentImageB64 = null;
+  document.getElementById('aiPasteText').value = '';
+  document.getElementById('aiStatus').textContent = '';
+  document.getElementById('aiStatus').className = 'ai-status';
+  clearImage();
+  document.getElementById('f-date').value = '';
+  document.getElementById('f-symbol').value = 'XAUUSD';
+  document.getElementById('f-direction').value = 'LONG';
+  document.getElementById('f-result').value = 'WIN';
+  document.getElementById('f-entry').value = '';
+  document.getElementById('f-exit').value = '';
+  document.getElementById('f-lot').value = '';
+  document.getElementById('f-pnl').value = '';
+  document.getElementById('f-session').value = '';
+  document.getElementById('f-setup').value = '';
+  document.getElementById('f-rr').value = '';
+  document.getElementById('f-note').value = '';
+  document.getElementById('f-pnl-display').textContent = '$0.00';
+  document.getElementById('f-pnl-display').className = 'pnl-display';
+  document.getElementById('btnDelete').style.display = 'none';
+  document.getElementById('valWarn').style.display = 'none';
+  onSymbolChange();
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+document.getElementById('modalOverlay').addEventListener('click', function(e){
+  if (e.target===this) closeModal();
+});
+
+// ============================================================
+//  SAVE / DELETE
+// ============================================================
+function saveTrade() {
+  var date   = document.getElementById('f-date').value;
+  var symbol = document.getElementById('f-symbol').value;
+  if (!date||!symbol) { alert('กรุณาเลือกวันที่และสินทรัพย์'); return; }
+  var pnl    = parseFloat(document.getElementById('f-pnl').value)||0;
+  var result = document.getElementById('f-result').value;
+  if ((result==='WIN'&&pnl<0)||(result==='LOSS'&&pnl>0)) {
+    if (!confirm('P&L ไม่สอดคล้องกับผลลัพธ์ที่เลือก ต้องการบันทึกต่อหรือไม่?')) return;
+  }
+  var trade = {
+    id:        editId!==null?editId:Date.now(),
+    date:      date,
+    symbol:    symbol,
+    direction: document.getElementById('f-direction').value,
+    result:    result,
+    entry:     parseFloat(document.getElementById('f-entry').value)||null,
+    exitPrice: parseFloat(document.getElementById('f-exit').value)||null,
+    lot:       parseFloat(document.getElementById('f-lot').value)||null,
+    pnl:       pnl,
+    session:   document.getElementById('f-session').value,
+    setup:     document.getElementById('f-setup').value.trim(),
+    rr:        document.getElementById('f-rr').value.trim(),
+    note:      document.getElementById('f-note').value.trim()
+  };
+  if (editId!==null) {
+    for (var i=0; i<trades.length; i++) {
+      if (trades[i].id===editId) { trades[i]=trade; break; }
+    }
+  } else {
+    trades.push(trade);
+  }
+  saveTrades();
+  closeModal();
+  renderCalendar();
+  if (document.getElementById('tab-trades').classList.contains('active')) renderTradeTable();
+  if (document.getElementById('tab-stats').classList.contains('active')) renderStats();
+}
+
+function deleteTrade() {
+  if (!confirm('ต้องการลบการเทรดนี้?')) return;
+  trades = trades.filter(function(x){ return x.id!==editId; });
+  saveTrades();
+  closeModal();
+  renderCalendar();
+  renderTradeTable();
+}
+
+function quickDelete(id) {
+  if (!confirm('ต้องการลบการเทรดนี้?')) return;
+  trades = trades.filter(function(x){ return x.id!==id; });
+  saveTrades();
+  renderTradeTable();
+  renderCalendar();
+}
+
+function deleteAllTrades() {
+  if (trades.length === 0) { alert('ไม่มีรายการเทรดที่จะลบ'); return; }
+  if (!confirm('⚠️ ต้องการลบออเดอร์ทั้งหมด ' + trades.length + ' รายการ? การกระทำนี้ไม่สามารถเรียกคืนได้!')) return;
+  if (!confirm('ยืนยันอีกครั้ง — ลบทั้งหมด ' + trades.length + ' รายการ?')) return;
+  trades = [];
+  saveTrades();
+  renderTradeTable();
+  renderCalendar();
+  if (document.getElementById('tab-stats').classList.contains('active')) renderStats();
+}
+
+// ============================================================
+//  TRADE TABLE with filters
+// ============================================================
+function getFiltered() {
+  var fResult  = document.getElementById('filterResult').value;
+  var fSession = document.getElementById('filterSession').value;
+  var fSymbol  = document.getElementById('filterSymbol').value;
+  var fSetup   = (document.getElementById('filterSetup').value||'').toLowerCase();
+  return trades.filter(function(t) {
+    if (fResult  && t.result!==fResult)  return false;
+    if (fSession && t.session!==fSession) return false;
+    if (fSymbol  && t.symbol!==fSymbol)  return false;
+    if (fSetup   && !(t.setup||'').toLowerCase().includes(fSetup)) return false;
+    return true;
+  });
+}
+
+function updateSymbolFilter() {
+  var sel = document.getElementById('filterSymbol');
+  var current = sel.value;
+  var syms = Array.from(new Set(trades.map(function(t){ return t.symbol; }))).sort();
+  sel.innerHTML = '<option value="">ทุก Symbol</option>';
+  syms.forEach(function(s){
+    var opt = document.createElement('option');
+    opt.value=s; opt.textContent=s;
+    sel.appendChild(opt);
+  });
+  if (current) sel.value = current;
+}
+
+function renderTradeTable() {
+  updateSymbolFilter();
+  var wrap = document.getElementById('tradeTableWrap');
+  var filtered = getFiltered();
+  if (!trades.length) {
+    wrap.innerHTML = '<div class="empty">ยังไม่มีรายการเทรด<br>คลิก "+ เพิ่มการเทรด" เพื่อเริ่มต้น</div>';
+    return;
+  }
+  if (!filtered.length) {
+    wrap.innerHTML = '<div class="empty">ไม่พบรายการที่ตรงกับเงื่อนไข</div>';
+    return;
+  }
+  var sorted = filtered.slice().sort(function(a,b){ return new Date(b.date)-new Date(a.date); });
+  var html = '<table class="trade-table"><thead><tr>' +
+    '<th>วันที่</th><th>Symbol</th><th>ทิศทาง</th><th>ผลลัพธ์</th>' +
+    '<th>Entry</th><th>Exit</th><th>Lot</th><th>P&L</th>' +
+    '<th>Session</th><th>Setup</th><th>R:R</th><th>บันทึก</th><th>จัดการ</th>' +
+    '</tr></thead><tbody>';
+  sorted.forEach(function(t) {
+    var pnlClass = t.pnl>0?'profit-cell':(t.pnl<0?'loss-cell':'be-cell');
+    var dirBadge = t.direction==='LONG'?'badge-long':'badge-short';
+    var resBadge = t.result==='WIN'?'badge-win':(t.result==='LOSS'?'badge-loss':'badge-be');
+    html += '<tr>' +
+      '<td>'+t.date+'</td>' +
+      '<td><b style="color:#fff">'+(t.symbol||'-')+'</b></td>' +
+      '<td><span class="badge '+dirBadge+'">'+t.direction+'</span></td>' +
+      '<td><span class="badge '+resBadge+'">'+t.result+'</span></td>' +
+      '<td>'+(t.entry!==null&&t.entry!==undefined?t.entry:'-')+'</td>' +
+      '<td>'+(t.exitPrice!==null&&t.exitPrice!==undefined?t.exitPrice:'-')+'</td>' +
+      '<td>'+(t.lot!==null&&t.lot!==undefined?t.lot:'-')+'</td>' +
+      '<td class="'+pnlClass+'">'+fmt(t.pnl)+'</td>' +
+      '<td>'+(t.session||'-')+'</td>' +
+      '<td>'+(t.setup||'-')+'</td>' +
+      '<td>'+(t.rr||'-')+'</td>' +
+      '<td style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="'+(t.note||'')+'">'+(t.note||'-')+'</td>' +
+      '<td>' +
+        '<button class="btn-edit" onclick="openModal('+t.id+')">แก้ไข</button>' +
+        '<button class="btn-del" onclick="quickDelete('+t.id+')">ลบ</button>' +
+      '</td>' +
+    '</tr>';
+  });
+  html += '</tbody></table>';
+  wrap.innerHTML = html;
+}
+
+// ============================================================
+//  STATS — Bug fix: Win Rate excludes BE; streak fix
+// ============================================================
+function renderStats() {
+  var grid = document.getElementById('statsGrid');
+  if (!trades.length) {
+    grid.innerHTML = '<div class="empty" style="grid-column:1/-1">ยังไม่มีข้อมูลสถิติ</div>';
+    document.getElementById('sessionBreakdown').innerHTML = '';
+    document.getElementById('setupBreakdown').innerHTML = '';
+    return;
+  }
+
+  var totalPnl = trades.reduce(function(s,t){ return s+t.pnl; }, 0);
+  var wins     = trades.filter(function(t){ return t.result==='WIN'; });
+  var losses   = trades.filter(function(t){ return t.result==='LOSS'; });
+  var bes      = trades.filter(function(t){ return t.result==='BE'; });
+
+  // Bug fix: Win Rate = wins / (wins + losses), BE excluded
+  var eligible = wins.length + losses.length;
+  var winRate  = eligible>0?((wins.length/eligible)*100).toFixed(1):'0.0';
+
+  var avgWin  = wins.length?(wins.reduce(function(s,t){return s+t.pnl;},0)/wins.length).toFixed(2):'0.00';
+  var avgLoss = losses.length?(losses.reduce(function(s,t){return s+t.pnl;},0)/losses.length).toFixed(2):'0.00';
+
+  var pnls  = trades.map(function(t){ return t.pnl; });
+  var best  = Math.max.apply(null,pnls);
+  var worst = Math.min.apply(null,pnls);
+
+  var grossWin  = wins.reduce(function(s,t){return s+t.pnl;},0);
+  var grossLoss = Math.abs(losses.reduce(function(s,t){return s+t.pnl;},0));
+  var pf        = grossLoss>0?(grossWin/grossLoss).toFixed(2):'∞';
+
+  // Max Drawdown
+  var running=0, peak=0, maxDD=0;
+  trades.slice().sort(function(a,b){ return new Date(a.date)-new Date(b.date); }).forEach(function(t){
+    running += t.pnl;
+    if (running>peak) peak=running;
+    var dd=peak-running;
+    if (dd>maxDD) maxDD=dd;
+  });
+
+  // Streak — Bug fix: flush final streak properly
+  var sortedT = trades.slice().sort(function(a,b){ return new Date(a.date)-new Date(b.date); });
+  var curStreak=0, maxWinStreak=0, maxLossStreak=0;
+  var streakType='';
+  sortedT.forEach(function(t) {
+    if (t.result==='BE') { curStreak=0; streakType=''; return; }
+    if (t.result===streakType) {
+      curStreak++;
+    } else {
+      curStreak=1;
+      streakType=t.result;
+    }
+    if (streakType==='WIN') maxWinStreak=Math.max(maxWinStreak,curStreak);
+    if (streakType==='LOSS') maxLossStreak=Math.max(maxLossStreak,curStreak);
+  });
+
+  var stats = [
+    { label:'TOTAL P&L',            value:fmt(totalPnl),                          cls:totalPnl>=0?'profit':'loss' },
+    { label:'จำนวนเทรดทั้งหมด',     value:trades.length,                           cls:'' },
+    { label:'WIN RATE (ไม่นับ BE)',  value:winRate+'%',                             cls:parseFloat(winRate)>=50?'profit':'loss' },
+    { label:'WIN / LOSS / BE',       value:wins.length+' / '+losses.length+' / '+bes.length, cls:'' },
+    { label:'AVG WIN',               value:'+$'+avgWin,                             cls:'profit' },
+    { label:'AVG LOSS',              value:'-$'+Math.abs(parseFloat(avgLoss)).toFixed(2), cls:'loss' },
+    { label:'BEST TRADE',            value:fmt(best),                               cls:'profit' },
+    { label:'WORST TRADE',           value:fmt(worst),                              cls:'loss' },
+    { label:'PROFIT FACTOR',         value:pf,                                      cls:parseFloat(pf)>=1?'profit':'loss' },
+    { label:'MAX DRAWDOWN',          value:'-$'+maxDD.toFixed(2),                   cls:maxDD>0?'loss':'' },
+    { label:'WIN STREAK (สูงสุด)',   value:maxWinStreak+' trades',                  cls:'profit' },
+    { label:'LOSS STREAK (สูงสุด)',  value:maxLossStreak+' trades',                 cls:maxLossStreak>=3?'loss':'warn' },
+  ];
+
+  grid.innerHTML = stats.map(function(s){
+    return '<div class="stat-card">'+
+      '<div class="s-label">'+s.label+'</div>'+
+      '<div class="s-value '+s.cls+'">'+s.value+'</div>'+
+    '</div>';
+  }).join('');
+
+  renderBreakdown('sessionBreakdown', 'สถิติแยกตาม Session', 'session');
+  renderBreakdown('setupBreakdown', 'สถิติแยกตาม Setup', 'setup');
+}
+
+function renderBreakdown(elId, title, field) {
+  var el = document.getElementById(elId);
+  var groups = {};
+  trades.forEach(function(t) {
+    var key = t[field]||'ไม่ระบุ';
+    if (!groups[key]) groups[key]={wins:0,losses:0,be:0,pnl:0,total:0};
+    groups[key].total++;
+    groups[key].pnl += t.pnl||0;
+    if (t.result==='WIN') groups[key].wins++;
+    else if (t.result==='LOSS') groups[key].losses++;
+    else groups[key].be++;
+  });
+  var keys = Object.keys(groups).sort(function(a,b){ return groups[b].pnl-groups[a].pnl; });
+  if (!keys.length) { el.innerHTML=''; return; }
+  var html = '<h3>'+title+'</h3>' +
+    '<table class="breakdown-table"><thead><tr>' +
+    '<th>'+(field==='session'?'Session':'Setup')+'</th><th>เทรด</th><th>Win%</th><th>P&L</th>' +
+    '</tr></thead><tbody>';
+  keys.forEach(function(k) {
+    var g=groups[k];
+    var eligible=g.wins+g.losses;
+    var wr=eligible>0?Math.round(g.wins/eligible*100):0;
+    html += '<tr>' +
+      '<td>'+k+'</td>' +
+      '<td>'+g.total+'</td>' +
+      '<td>'+wr+'%</td>' +
+      '<td class="'+(g.pnl>=0?'profit-cell':'loss-cell')+'">'+fmt(g.pnl)+'</td>' +
+    '</tr>';
+  });
+  html += '</tbody></table>';
+  el.innerHTML = html;
+}
+
+// ============================================================
+//  AI PROVIDER MANAGEMENT
+// ============================================================
+var AI_PROVIDERS = {
+  claude:   { name: 'Claude',    prefix: 'sk-ant-', storageKey: 'tj_key_claude',   modelKey: 'tj_model_claude' },
+  gemini:   { name: 'Gemini',    prefix: 'AIza',    storageKey: 'tj_key_gemini',   modelKey: 'tj_model_gemini' },
+  openai:   { name: 'OpenAI',    prefix: 'sk-',     storageKey: 'tj_key_openai',   modelKey: 'tj_model_openai' },
+  grok:     { name: 'Grok',      prefix: 'xai-',    storageKey: 'tj_key_grok',     modelKey: 'tj_model_grok' },
+  deepseek: { name: 'DeepSeek',  prefix: 'sk-',     storageKey: 'tj_key_deepseek', modelKey: 'tj_model_deepseek' }
+};
+var currentProvider = localStorage.getItem('tj_active_provider') || 'claude';
+
+function getActiveProvider() { return currentProvider; }
+
+function getApiKey() {
+  var p = AI_PROVIDERS[currentProvider];
+  return p ? (localStorage.getItem(p.storageKey) || '') : '';
+}
+
+function getProviderKey(pid) {
+  var p = AI_PROVIDERS[pid];
+  return p ? (localStorage.getItem(p.storageKey) || '') : '';
+}
+
+function getSelectedModel(pid) {
+  var p = AI_PROVIDERS[pid];
+  if (!p) return '';
+  return localStorage.getItem(p.modelKey) || document.getElementById('model-'+pid)?.value || '';
+}
+
+function updateApiKeyButton() {
+  var btn = document.getElementById('btnApiKey');
+  var dot = document.getElementById('apiKeyDot');
+  var label = document.getElementById('apiKeyLabel');
+  var key = getApiKey();
+  var pName = AI_PROVIDERS[currentProvider]?.name || 'AI';
+  if (key) {
+    btn.classList.add('key-set');
+    dot.style.background = '#00e676';
+    label.textContent = pName + ' ✓';
+  } else {
+    btn.classList.remove('key-set');
+    dot.style.background = '#444';
+    label.textContent = pName + ' (ไม่มี Key)';
+  }
+}
+
+function selectProvider(pid, el) {
+  currentProvider = pid;
+  localStorage.setItem('tj_active_provider', pid);
+  // update tab UI
+  document.querySelectorAll('.provider-tab').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+  // update panel
+  document.querySelectorAll('.provider-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById('panel-'+pid).classList.add('active');
+  // fill existing key
+  var key = getProviderKey(pid);
+  var input = document.getElementById('key-'+pid);
+  if (input) { input.value = key; input.type = 'password'; }
+  // fill saved model
+  var savedModel = localStorage.getItem(AI_PROVIDERS[pid]?.modelKey || '');
+  var modelSel = document.getElementById('model-'+pid);
+  if (modelSel && savedModel) modelSel.value = savedModel;
+  // update status
+  var status = document.getElementById('akStatus');
+  if (key) {
+    status.className = 'ak-status ok';
+    status.textContent = '✅ มี API Key บันทึกอยู่แล้ว (...'+key.slice(-4)+')';
+  } else {
+    status.className = 'ak-status warn';
+    status.textContent = '⚠️ ยังไม่มี API Key สำหรับ ' + (AI_PROVIDERS[pid]?.name || pid);
+  }
+  updateApiKeyButton();
+  var badge = document.getElementById('aiProviderBadge');
+  if (badge) badge.textContent = (AI_PROVIDERS[pid]?.name || 'AI').toUpperCase();
+}
+
+function openApiKeyModal() {
+  // restore tabs to current provider
+  document.querySelectorAll('.provider-tab').forEach(function(t){ t.classList.remove('active'); });
+  var activeTab = document.querySelector('.provider-tab.'+currentProvider);
+  if (activeTab) activeTab.classList.add('active');
+  document.querySelectorAll('.provider-panel').forEach(function(p){ p.classList.remove('active'); });
+  var activePanel = document.getElementById('panel-'+currentProvider);
+  if (activePanel) activePanel.classList.add('active');
+  // fill key & model
+  Object.keys(AI_PROVIDERS).forEach(function(pid) {
+    var k = getProviderKey(pid);
+    var inp = document.getElementById('key-'+pid);
+    if (inp) { inp.value = k; inp.type = 'password'; }
+    var savedModel = localStorage.getItem(AI_PROVIDERS[pid].modelKey || '');
+    var modelSel = document.getElementById('model-'+pid);
+    if (modelSel && savedModel) modelSel.value = savedModel;
+  });
+  // status for current
+  var key = getProviderKey(currentProvider);
+  var status = document.getElementById('akStatus');
+  if (key) {
+    status.className = 'ak-status ok';
+    status.textContent = '✅ มี API Key บันทึกอยู่แล้ว (...'+key.slice(-4)+')';
+  } else {
+    status.className = 'ak-status warn';
+    status.textContent = '⚠️ ยังไม่มี API Key สำหรับ ' + (AI_PROVIDERS[currentProvider]?.name || currentProvider);
+  }
+  document.getElementById('apikeyOverlay').classList.add('open');
+}
+
+function closeApiKeyModal() {
+  document.getElementById('apikeyOverlay').classList.remove('open');
+}
+
+function toggleKeyVis(pid) {
+  var input = document.getElementById('key-'+pid);
+  if (input) input.type = input.type === 'password' ? 'text' : 'password';
+}
+// legacy compat
+function toggleApiKeyVis() { toggleKeyVis(currentProvider); }
+
+function onProviderKeyInput(pid) {
+  var val = (document.getElementById('key-'+pid)?.value || '').trim();
+  var p = AI_PROVIDERS[pid];
+  var status = document.getElementById('akStatus');
+  if (pid !== currentProvider) return;
+  if (!val) {
+    status.className = 'ak-status warn';
+    status.textContent = '⚠️ กรุณาใส่ API Key';
+  } else {
+    status.className = 'ak-status ok';
+    status.textContent = '✅ Key พร้อมใช้งาน';
+  }
+}
+function onApiKeyInput() { onProviderKeyInput(currentProvider); }
+
+function saveApiKey() {
+  // Save all keys that have values
+  var anyKey = false;
+  Object.keys(AI_PROVIDERS).forEach(function(pid) {
+    var val = (document.getElementById('key-'+pid)?.value || '').trim();
+    var p = AI_PROVIDERS[pid];
+    if (val) {
+      localStorage.setItem(p.storageKey, val);
+      anyKey = true;
+    }
+    // save model selection
+    var modelSel = document.getElementById('model-'+pid);
+    if (modelSel) localStorage.setItem(p.modelKey, modelSel.value);
+  });
+  if (!getProviderKey(currentProvider)) {
+    alert('กรุณาใส่ API Key สำหรับ ' + (AI_PROVIDERS[currentProvider]?.name || currentProvider));
+    return;
+  }
+  updateApiKeyButton();
+  closeApiKeyModal();
+}
+
+function clearCurrentProviderKey() {
+  if (!confirm('ลบ API Key ของ ' + (AI_PROVIDERS[currentProvider]?.name || currentProvider) + ' ออกจากเครื่องนี้?')) return;
+  var p = AI_PROVIDERS[currentProvider];
+  if (p) localStorage.removeItem(p.storageKey);
+  var inp = document.getElementById('key-'+currentProvider);
+  if (inp) inp.value = '';
+  var status = document.getElementById('akStatus');
+  status.className = 'ak-status warn';
+  status.textContent = '⚠️ ลบ API Key แล้ว';
+  updateApiKeyButton();
+}
+// legacy
+function clearApiKey() { clearCurrentProviderKey(); }
+
+// ============================================================
+//  INIT
+// ============================================================
+onSymbolChange();
+renderCalendar();
+updateApiKeyButton();
+// Restore active provider tab in modal on init
+(function() {
+  var tabs = document.querySelectorAll('.provider-tab');
+  tabs.forEach(function(t){ t.classList.remove('active'); });
+  var activeTab = document.querySelector('.provider-tab.'+currentProvider);
+  if (activeTab) activeTab.classList.add('active');
+  var panels = document.querySelectorAll('.provider-panel');
+  panels.forEach(function(p){ p.classList.remove('active'); });
+  var ap = document.getElementById('panel-'+currentProvider);
+  if (ap) ap.classList.add('active');
+  // Update AI badge
+  var badge = document.getElementById('aiProviderBadge');
+  if (badge) badge.textContent = (AI_PROVIDERS[currentProvider]?.name || 'AI').toUpperCase();
+})();
+</script>
+
+<script>
+// ── PWA Install Banner ────────────────────────────────────────────────────────
+(function() {
+  // Register inline Service Worker via blob
+  var swCode = `
+const CACHE = 'tj-pro-v3';
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE).then(cache => {
+      // cache the app page itself
+      return fetch(self.registration.scope).then(res => {
+        return cache.put(self.registration.scope, res);
+      }).catch(() => {});
+    }).then(() => self.skipWaiting())
+  );
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.filter(k => k !== CACHE).map(k => caches.delete(k))
+    )).then(() => clients.claim())
+  );
+});
+self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
+  e.respondWith(
+    caches.match(e.request).then(cached => {
+      if (cached) return cached;
+      return fetch(e.request).then(res => {
+        if (res && res.status === 200) {
+          var clone = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+        }
+        return res;
+      }).catch(() => caches.match(e.request));
+    })
+  );
+});
+`;
+  if ('serviceWorker' in navigator) {
+    var blob = new Blob([swCode], { type: 'application/javascript' });
+    var swUrl = URL.createObjectURL(blob);
+    navigator.serviceWorker.register(swUrl, { scope: '/' }).catch(function(){
+      // standalone file — SW scope limited, OK
+    });
+  }
+
+  // ── Android / Desktop Install Prompt ──────────────────────────────────
+  var deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    var dismissed2 = localStorage.getItem('pwa-banner-dismissed');
+    var isStandalone2 = window.matchMedia('(display-mode: standalone)').matches;
+    if (!dismissed2 && !isStandalone2) {
+      var banner2 = document.createElement('div');
+      banner2.id = 'pwa-install-banner-android';
+      banner2.innerHTML = `
+        <div style="display:flex;align-items:center;gap:12px;flex:1;">
+          <span style="font-size:28px;">📲</span>
+          <div>
+            <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:2px;">ติดตั้ง Trading Journal Pro</div>
+            <div style="font-size:12px;color:#aaa;line-height:1.5;">ติดตั้งเป็น App ลงเครื่องได้เลย ใช้งาน Offline ได้</div>
+          </div>
+        </div>
+        <button id="pwa-install-btn" style="background:#3f51b5;border:none;color:#fff;font-size:13px;font-weight:700;padding:8px 16px;border-radius:6px;cursor:pointer;white-space:nowrap;">ติดตั้ง</button>
+        <button id="pwa-banner2-close" style="background:none;border:none;color:#777;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1;">✕</button>
+      `;
+      Object.assign(banner2.style, {
+        position: 'fixed', bottom: '0', left: '0', right: '0',
+        background: '#1a1a1a', borderTop: '1px solid #333',
+        padding: '14px 16px', display: 'flex', alignItems: 'center',
+        gap: '12px', zIndex: '9999', boxShadow: '0 -4px 20px rgba(0,0,0,.6)',
+        animation: 'slideUp .4s ease'
+      });
+      document.body.appendChild(banner2);
+      document.getElementById('pwa-install-btn').addEventListener('click', function() {
+        banner2.remove();
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(r) {
+          if (r.outcome === 'accepted') localStorage.setItem('pwa-banner-dismissed', '1');
+          deferredPrompt = null;
+        });
+      });
+      document.getElementById('pwa-banner2-close').addEventListener('click', function() {
+        banner2.remove();
+        localStorage.setItem('pwa-banner-dismissed', '1');
+      });
+      setTimeout(function() { if (banner2.parentNode) banner2.remove(); }, 20000);
+    }
+  });
+
+  // ── macOS Safari Install Guide Banner ──────────────────────────────────
+  var isMacSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && /Macintosh/i.test(navigator.userAgent);
+  var isStandaloneMac = window.matchMedia('(display-mode: standalone)').matches;
+  var dismissedMac = localStorage.getItem('pwa-banner-dismissed');
+
+  if (isMacSafari && !isStandaloneMac && !dismissedMac) {
+    var styleMac = document.createElement('style');
+    styleMac.textContent = '@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}';
+    document.head.appendChild(styleMac);
+
+    var bannerMac = document.createElement('div');
+    bannerMac.id = 'pwa-install-banner-mac';
+    bannerMac.innerHTML = `
+      <div style="display:flex;align-items:center;gap:12px;flex:1;">
+        <span style="font-size:28px;">🖥️</span>
+        <div>
+          <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:4px;">ติดตั้งเป็น App บน Mac</div>
+          <div style="font-size:12px;color:#aaa;line-height:1.7;">
+            คลิก <span style="background:#333;padding:2px 8px;border-radius:4px;color:#fff;">File</span>
+            → <span style="background:#333;padding:2px 8px;border-radius:4px;color:#fff;">Add to Dock…</span>
+            ใน Safari เพื่อติดตั้ง
+          </div>
+        </div>
+      </div>
+      <button id="pwa-mac-close" style="background:none;border:none;color:#777;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1;">✕</button>
+    `;
+    Object.assign(bannerMac.style, {
+      position: 'fixed', bottom: '0', left: '0', right: '0',
+      background: '#1a1a1a', borderTop: '1px solid #333',
+      padding: '14px 20px', display: 'flex', alignItems: 'center',
+      gap: '12px', zIndex: '9999', boxShadow: '0 -4px 20px rgba(0,0,0,.6)',
+      animation: 'slideUp .4s ease'
+    });
+    document.body.appendChild(bannerMac);
+    document.getElementById('pwa-mac-close').addEventListener('click', function() {
+      bannerMac.remove();
+      localStorage.setItem('pwa-banner-dismissed', '1');
+    });
+    setTimeout(function() { if (bannerMac.parentNode) bannerMac.remove(); }, 20000);
+  }
+
+  // ── iOS Install Guide Banner ────────────────────────────────────────────
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isStandalone = window.navigator.standalone === true;
+  var dismissed = localStorage.getItem('pwa-banner-dismissed');
+
+  if (isIOS && !isStandalone && !dismissed) {
+    var banner = document.createElement('div');
+    banner.id = 'pwa-install-banner';
+    banner.innerHTML = `
+      <div style="display:flex;align-items:center;gap:12px;flex:1;">
+        <span style="font-size:28px;">📱</span>
+        <div>
+          <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:2px;">ติดตั้งเป็น App บน iPhone</div>
+          <div style="font-size:12px;color:#aaa;line-height:1.5;">
+            แตะ <span style="background:#333;padding:2px 7px;border-radius:4px;color:#fff;">แชร์ ↑</span>
+            แล้วเลือก <span style="background:#333;padding:2px 7px;border-radius:4px;color:#fff;">เพิ่มไปยังหน้าจอหลัก</span>
+          </div>
+        </div>
+      </div>
+      <button id="pwa-banner-close" style="background:none;border:none;color:#777;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1;">✕</button>
+    `;
+    Object.assign(banner.style, {
+      position: 'fixed',
+      bottom: '0',
+      left: '0',
+      right: '0',
+      background: '#1a1a1a',
+      borderTop: '1px solid #333',
+      padding: '14px 16px',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '12px',
+      zIndex: '9999',
+      boxShadow: '0 -4px 20px rgba(0,0,0,.6)',
+      animation: 'slideUp .4s ease'
+    });
+
+    // Add animation
+    var style = document.createElement('style');
+    style.textContent = '@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}';
+    document.head.appendChild(style);
+
+    document.body.appendChild(banner);
+
+    document.getElementById('pwa-banner-close').addEventListener('click', function() {
+      banner.remove();
+      localStorage.setItem('pwa-banner-dismissed', '1');
+    });
+
+    // Auto-hide after 15s
+    setTimeout(function() {
+      if (banner.parentNode) banner.remove();
+    }, 15000);
+  }
+})();
+</script>
+</body>
+</html>
